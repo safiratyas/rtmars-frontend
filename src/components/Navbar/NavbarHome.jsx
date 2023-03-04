@@ -9,8 +9,8 @@ function NavbarHomepage() {
         <Container>
           <Link to="/">
             <Navbar.Brand href="#home">
-              {/* <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="mx-auto" alt="list"
-              /> */}
+              <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="mx-auto mb-2" alt="list"
+              />
             </Navbar.Brand>
           </Link>
           <Nav className="ms-auto">
