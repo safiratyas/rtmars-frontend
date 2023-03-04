@@ -5,7 +5,7 @@ import './CardDesc.scss';
 function CardDescription() {
   return (
     <Container className="mb-5">
-      <div className="card-desc mb-5">
+      <div className="card-desc mb-5" id="fitur">
         <p>Features</p>
         <h3>Fitur - Fitur Yang Tersedia</h3>
       </div>

@@ -1,10 +1,10 @@
 // import { Link } from 'react-router-dom';
-import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import './CardDesc.scss';
 
 function CardSum() {
   return (
-    <div className="div-sum mt-5 mb-5">
+    <div className="div-sum mt-5 mb-5" id="total">
       <Container>
         <Row xs={1} md={4} className="g-4 text-center">
           <Col>
