@@ -3,10 +3,11 @@ import {
   Routes,
   Route 
 } from 'react-router-dom';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 
 // Import Pages
 import Homepage from './pages/Homepage';
+import Login from './pages/Login';
 
 // Styles
 import './styles/App.scss';
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     // </Provider>
