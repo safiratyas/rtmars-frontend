@@ -1,5 +1,6 @@
 $dark-blue: #002B5B;
 $dark-green: #06A788;
+$pastel-blue: #8FE3CF;
 
 .card-desc {
   p {
@@ -66,4 +67,9 @@ $dark-green: #06A788;
   height: 50px;
   width: 70px;
   background-color: $dark-green;
+}
+
+.div-sum {
+  background-color: $pastel-blue;
+  height: 250px;
 }
