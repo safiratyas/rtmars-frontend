@@ -7,11 +7,11 @@ function CardInterest() {
       <Card className="interest-description">
         <Row>
           <Col xs={6}>
-            <Button className="interest-btn" href="/login" style={{ marginLeft: '50px', paddingTop: '2.5%' }}>Free Forever</Button>
+            <Button className="interest-btn" href="/login" style={{ marginLeft: '50px', paddingTop: '2.5%' }}>Gratis Selamanya</Button>
           </Col>
           <Col xs={6}>
             <Card.Body>
-              <Card.Title className="interest-title">One app that can change your life to the fullest!</Card.Title>
+              <Card.Title className="interest-title">Satu website yang dapat membantu pekerjaan Anda!</Card.Title>
             </Card.Body>
           </Col>
         </Row>
