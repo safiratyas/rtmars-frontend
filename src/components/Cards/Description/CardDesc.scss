@@ -1,0 +1,69 @@
+$dark-blue: #002B5B;
+$dark-green: #06A788;
+
+.card-desc {
+  p {
+    text-align: center;
+    font-weight: bold;
+    color: $dark-green;
+    margin-top: 5%;
+  }
+  h3 {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.list-description {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background-color: #E5FDD1;
+    transition: 0.5s;
+  }
+
+  img {
+    width: 50%;
+    border-radius: 8px;
+  }
+}
+
+.interest-description {
+  margin-top: 10%;
+  margin-bottom: -100px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+
+  .interest-title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .interest-btn {
+    width: 50%;
+    height: 50px;
+    margin-top: 2.5%;
+    border-radius: 20px;
+    background-color: $dark-blue;
+
+    &:hover {
+      background-color: $dark-blue;
+      border-color: $dark-blue;
+      color: white;
+      transform: scale(1.02);
+    }
+  }
+}
+
+.form-list {
+  height: 50px;
+}
+
+.list-btn {
+  height: 50px;
+  width: 70px;
+  background-color: $dark-green;
+}
