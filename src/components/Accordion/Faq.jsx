@@ -4,7 +4,7 @@ import "./Faq.scss";
 
 function Faq() {
   return (
-    <Container className="mt-5">
+    <Container style={{ paddingTop: "5%" }}>
       <div className="faq-desc mb-5">
         <p>FAQ</p>
         <h3>Pertanyaan Yang Sering Diajukan</h3>

@@ -12,7 +12,7 @@ function RegisterCard() {
           <Card.Text className="form-register">
             <Form>
               <Form.Group className="mb-3 register-form">
-                <Form.Label className="form-label">Full Name</Form.Label>
+                <Form.Label className="form-label">Nama Panjang</Form.Label>
                 <Form.Control
                   placeholder="Jane Doe"
                   className="text"

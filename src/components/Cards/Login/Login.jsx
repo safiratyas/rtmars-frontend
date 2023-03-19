@@ -28,6 +28,16 @@ function LoginCard() {
                   className="text"
                 />
               </Form.Group>
+
+              {/* <Form.Group className="mb-3">
+                <Form.Label className="form-label">Kata Kunci</Form.Label>
+                <Form.Control
+                  type="keywords"
+                  placeholder="Kata Kunci Saat Mendaftar"
+                  className="text"
+                />
+              </Form.Group> */}
+
               <Button variant="primary" type="submit" className="login-btn">
                 Check
               </Button>
