@@ -4,7 +4,7 @@ import './CardDesc.scss';
 
 function CardSum() {
   return (
-    <div className="div-sum mt-5 mb-5" id="total">
+    <div className="div-sum mt-5 mb-5">
       <Container>
         <Row xs={1} md={4} className="g-4 text-center">
           <Col>

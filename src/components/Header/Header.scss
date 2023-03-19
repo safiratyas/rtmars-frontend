@@ -1,10 +1,15 @@
 $dark-blue: #002B5B;
 $dark-green: #06A788;
 
+
+.list-img {
+  margin-bottom: 5%;
+}
+
 .list-desc {
   h3 {
     font-weight: bold;
-    padding-top: 20%;
+    padding-top: 15%;
   }
 
   .list-btn {
@@ -13,6 +18,7 @@ $dark-green: #06A788;
     border-radius: 20px;
     width: 50%;
     height: 50px;
+    margin-top: 5%;
 
     &:hover {
       background-color: $dark-blue;

@@ -4,8 +4,8 @@ import './Header.scss';
 
 function Header() {
   return (
-    <Container id="header">
-      <Row>
+    <Container className="mb-5">
+      <Row style={{ paddingTop: "5%" }}>
         <Col xs={6} className="list-img">
           <img src={process.env.PUBLIC_URL + '/images/list.gif'} alt="list" />
         </Col>
