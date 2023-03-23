@@ -38,4 +38,21 @@ $soft-blue: #8FE3CF;
       color: white;
     }
   }
+
+  .login-pengurus {
+    width: 100%;
+    background-color: white;
+    border-color: $dark-green;
+    border-radius: 16px;
+    height: 45px;
+    margin-top: 3%;
+    color: $dark-green;
+
+    &:hover {
+      background-color: white;
+      border-color: $dark-green;
+      transform: scale(1.02);
+      color: $dark-green;
+    }
+  }
 }

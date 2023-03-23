@@ -14,10 +14,10 @@ function NavbarHomepage() {
             </Navbar.Brand>
           </Link>
           <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
-            <Nav.Link href="#header">Tentang</Nav.Link>
-            <Nav.Link href="#total">Total</Nav.Link>
-            <Nav.Link href="#fitur">Fitur</Nav.Link>
-            <Nav.Link href="#pertanyaan">Pertanyaan</Nav.Link>
+            <Nav.Link href="#header">Pengurus</Nav.Link>
+            <Nav.Link href="#total">Agenda</Nav.Link>
+            <Nav.Link href="#fitur">Permohonan</Nav.Link>
+            <Nav.Link href="#pertanyaan">Laporan</Nav.Link>
           </Nav>
           <Nav className="d-flex">
             <Link to="/register">

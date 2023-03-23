@@ -41,6 +41,11 @@ function LoginCard() {
               <Button variant="primary" type="submit" className="login-btn">
                 Check
               </Button>
+              <Link to="/login-pengurus" style={{ textDecoration: 'none' }}>
+                <Button variant="primary" type="submit" className="login-pengurus">
+                  RT & Dasawisma
+                </Button>
+              </Link>
 
               <div className="text-center mt-4 mb-3">
                 <Form.Group className="mx-auto">

@@ -3,7 +3,7 @@ import './CardDesc.scss';
 
 function CardInterest() {
   return (
-    <Container className="mt-5">
+    <Container style={{ paddingTop: "5%" }}>
       <Card className="interest-description">
         <Row>
           <Col xs={6}>

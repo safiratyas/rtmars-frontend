@@ -9,6 +9,7 @@ import {
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import LoginPengurus from './components/Cards/Login/LoginPengurus';
 
 // Styles
 import './styles/App.scss';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login-pengurus" element={<LoginPengurus />} />
         </Routes>
       </BrowserRouter>
     // </Provider>
