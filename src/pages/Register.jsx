@@ -1,4 +1,4 @@
-import Register from "../components/Cards/Register/Register"
+import Register from "../components/Form/Register/Register"
 
 function RegisterPage() {
   return (

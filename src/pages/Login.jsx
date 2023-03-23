@@ -1,5 +1,5 @@
 import React from "react";
-import LoginCard from "../components/Cards/Login/Login";
+import LoginCard from "../components/Form/Login/Login";
 
 function Login() {
   return (

@@ -18,7 +18,7 @@ function NavbarHomepage() {
               <NavDropdown.Item href="/pendataan" style={{ textDecoration: 'none' }}>
                 Daftar Data Warga
               </NavDropdown.Item>
-              <NavDropdown.Item>
+              <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
                 Penambahan Data Warga
               </NavDropdown.Item>
             </NavDropdown>
