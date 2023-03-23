@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './Navbar.scss';
 
 function NavbarHomepage() {
@@ -14,7 +14,14 @@ function NavbarHomepage() {
             </Navbar.Brand>
           </Link>
           <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
-            <Link to="/pendataan" style={{ textDecoration: 'none' }}><Nav.Link href="#pertanyaan">Pendataan</Nav.Link></Link>
+            <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/pendataan" style={{ textDecoration: 'none' }}>
+                Daftar Data Warga
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                Penambahan Data Warga
+              </NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link href="#header">Agenda</Nav.Link>
             <Nav.Link href="#total">Pengurus</Nav.Link>
             <Nav.Link href="#fitur">Kontak</Nav.Link>

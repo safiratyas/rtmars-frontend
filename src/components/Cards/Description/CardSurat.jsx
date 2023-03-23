@@ -2,12 +2,12 @@
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import './CardDesc.scss';
 
-function CardWarga() {
+function CardSurat() {
   return (
     <Container>
       <div className="card-desc mb-5">
         <p>Features</p>
-        <h3>Data - Data Warga</h3>
+        <h3>Data - Data Surat Permohonan Warga</h3>
       </div>
       <Row xs={1} md={4} className="g-4 text-center">
         {Array.from({ length: 8 }).map((_, idx) => (
@@ -26,4 +26,4 @@ function CardWarga() {
   )
 }
 
-export default CardWarga;
+export default CardSurat;
