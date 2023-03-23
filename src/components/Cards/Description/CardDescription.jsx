@@ -30,19 +30,19 @@ function CardDescription() {
         </Col>
         <Col>
           <Card className="list-description" style={{ height: "350px" }}>
-            <img src={process.env.PUBLIC_URL + '/images/document.gif'} className="mx-auto" alt="list" />
+            <img src={process.env.PUBLIC_URL + '/images/consultation.gif'} className="mx-auto" alt="list" />
             <Card.Body>
-              <Card.Title style={{ fontWeight: "bold" }}>Permohonan Surat</Card.Title>
-              <Card.Text style={{ color: 'grey' }}>Kemudahan dalam menyimpan surat menyurat sesuai dengan permohonan warga.</Card.Text>
+              <Card.Title style={{ fontWeight: "bold" }}>Pengurus</Card.Title>
+              <Card.Text style={{ color: 'grey' }}>Informasi profile pengurus yang tercatat di wilayah RT 10 Manggarai Selatan</Card.Text>
             </Card.Body>
           </Card>
         </Col>
         <Col>
           <Card className="list-description" style={{ height: "350px" }}>
-            <img src={process.env.PUBLIC_URL + '/images/consultation.gif'} className="mx-auto" alt="list" />
+            <img src={process.env.PUBLIC_URL + '/images/document.gif'} className="mx-auto" alt="list" />
             <Card.Body>
-              <Card.Title style={{ fontWeight: "bold" }}>Laporan Tamu</Card.Title>
-              <Card.Text style={{ color: 'grey' }}>Laporan keamanan dan ketertiban untuk tamu wajib lapor 1 x 24 jam kepada RT.</Card.Text>
+              <Card.Title style={{ fontWeight: "bold" }}>Permohonan Surat</Card.Title>
+              <Card.Text style={{ color: 'grey' }}>Kemudahan dalam menyimpan surat menyurat sesuai dengan permohonan warga.</Card.Text>
             </Card.Body>
           </Card>
         </Col>
