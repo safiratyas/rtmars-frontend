@@ -14,7 +14,7 @@ function NavbarHomepage() {
             </Navbar.Brand>
           </Link>
           <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
-            <Nav.Link href="#pertanyaan">Pendataan</Nav.Link>
+            <Link to="/pendataan" style={{ textDecoration: 'none' }}><Nav.Link href="#pertanyaan">Pendataan</Nav.Link></Link>
             <Nav.Link href="#header">Agenda</Nav.Link>
             <Nav.Link href="#total">Pengurus</Nav.Link>
             <Nav.Link href="#fitur">Kontak</Nav.Link>

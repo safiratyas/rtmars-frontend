@@ -15,6 +15,18 @@ $pastel-blue: #8FE3CF;
   }
 }
 
+.card-feat {
+  p {
+    text-align: left;
+    font-weight: bold;
+    color: $dark-green;
+  }
+  h5 {
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
 .list-description {
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
