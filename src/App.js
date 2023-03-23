@@ -12,6 +12,8 @@ import Register from './pages/Register';
 import LoginPengurus from './pages/LoginPengurus';
 import DataWarga from './pages/CardWarga';
 import FormData from './pages/FormData';
+import SuratWarga from './pages/FormSurat';
+import Agenda from './pages/Agenda';
 
 // Styles
 import './styles/App.scss';
@@ -29,6 +31,8 @@ function App() {
           <Route path="/login-pengurus" element={<LoginPengurus />} />
           <Route path="/pendataan" element={<DataWarga />} />
           <Route path="/input/warga" element={<FormData />} />
+          <Route path="/input/surat" element={<SuratWarga />} />
+          <Route path="/agenda" element={<Agenda />} />
         </Routes>
       </BrowserRouter>
     // </Provider>

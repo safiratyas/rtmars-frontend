@@ -6,7 +6,6 @@ import CardInterest from "../components/Cards/Description/CardInterest";
 import Faq from "../components/Accordion/Faq";
 import Footer from "../components/Footer/Footer";
 import CardSum from "../components/Cards/Description/CardSum";
-import Activity from "../components/Carousel/Activity";
 
 function Homepage() {
   return (
@@ -15,7 +14,6 @@ function Homepage() {
       <Header />
       <CardSum />
       <CardDescription />
-      <Activity />
       <Faq />
       <CardInterest />
       <Footer />

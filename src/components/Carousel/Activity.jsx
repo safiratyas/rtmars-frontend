@@ -15,7 +15,7 @@ function Activity() {
 
   return (
     <>
-      <div style={{ paddingTop: "10%" }}>
+      <div>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           <SwiperSlide><img src={process.env.PUBLIC_URL + '/images/contoh-header.png'} className="mb-2" alt="header" style={{ height: "600px" }}
           /></SwiperSlide>

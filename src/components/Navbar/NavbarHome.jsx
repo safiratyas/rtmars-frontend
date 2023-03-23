@@ -19,10 +19,13 @@ function NavbarHomepage() {
                 Daftar Data Warga
               </NavDropdown.Item>
               <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
-                Penambahan Data Warga
+                Input Data Warga
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
+                Input Surat Permohonan
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#header">Agenda</Nav.Link>
+            <Nav.Link href="/agenda">Agenda</Nav.Link>
             <Nav.Link href="#total">Pengurus</Nav.Link>
             <Nav.Link href="#fitur">Kontak</Nav.Link>
           </Nav>
