@@ -9,7 +9,7 @@ function NavbarPendataan() {
         <Container>
           <Link to="/">
             <Navbar.Brand href="#home">
-              <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="mb-2" alt="list" style={{ width: "21%" }}
+              <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="mb-2" alt="list" style={{ width: "25%" }}
               />
             </Navbar.Brand>
           </Link>

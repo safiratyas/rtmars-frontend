@@ -12,7 +12,6 @@ import 'swiper/css/pagination';
 import "./Activity.scss"
 
 function Activity() {
-
   return (
     <>
       <div>

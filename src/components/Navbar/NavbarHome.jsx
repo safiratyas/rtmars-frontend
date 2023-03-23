@@ -27,7 +27,6 @@ function NavbarHomepage() {
             </NavDropdown>
             <Nav.Link href="/agenda">Agenda</Nav.Link>
             <Nav.Link href="#total">Pengurus</Nav.Link>
-            <Nav.Link href="#fitur">Kontak</Nav.Link>
           </Nav>
           <Nav className="d-flex">
             <Link to="/register">
