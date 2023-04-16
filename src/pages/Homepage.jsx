@@ -1,5 +1,6 @@
 import React from "react";
 import NavbarHomepage from "../components/Navbar/NavbarHome";
+// import NavbarProfile from "../components/Navbar/NavbarProfile";
 import Header from "../components/Header/Header";
 import CardDescription from "../components/Cards/Description/CardDescription";
 import CardInterest from "../components/Cards/Description/CardInterest";
@@ -11,6 +12,7 @@ function Homepage() {
   return (
     <>
       <NavbarHomepage />
+      {/* <NavbarProfile /> */}
       <Header />
       <CardSum />
       <CardDescription />
