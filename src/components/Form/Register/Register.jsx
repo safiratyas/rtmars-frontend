@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Card, Container, Form, Alert } from 'react-bootstrap';
+// import PopSuccess from '../../Modals/PopSuccess';
 import './Register.scss';
 
 function RegisterCard() {
@@ -10,6 +11,7 @@ function RegisterCard() {
   const nameField = useRef("");
   const emailField = useRef("");
   const passwordField = useRef("")
+  const [modalShow, setModalShow] = useState(false);
 
   const [errorResponse, setErrorResponse] = useState({
     isError: false,
@@ -32,7 +34,6 @@ function RegisterCard() {
       console.log(registerRequest)
 
       const registerResponse = registerRequest;
-
       if (registerResponse.status) navigate("/login");
 
     } catch (err) {
@@ -82,7 +83,7 @@ function RegisterCard() {
                 />
               </Form.Group>
 
-              <Button type="submit" className="register-btn">
+              <Button type="submit" className="register-btn" onClick={() => setModalShow(true)}>
                 Check
               </Button>
 
@@ -99,7 +100,7 @@ function RegisterCard() {
           </Card.Text>
         </Card.Body>
       </Card>
-    </Container>
+    </Container >
   )
 }
 
