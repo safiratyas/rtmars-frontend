@@ -3,7 +3,8 @@ import {
   Routes,
   Route 
 } from 'react-router-dom';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
+import store from './redux/store'
 
 // Import Pages
 import Homepage from './pages/Homepage';
@@ -22,7 +23,7 @@ import '@fontsource/poppins';
 
 function App() {
   return (
-    // <Provider>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -35,7 +36,7 @@ function App() {
           <Route path="/agenda" element={<Agenda />} />
         </Routes>
       </BrowserRouter>
-    // </Provider>
+    </Provider>
   );
 }
 

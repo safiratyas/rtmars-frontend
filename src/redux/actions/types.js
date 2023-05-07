@@ -1,1 +1,2 @@
-export const GET_LIST_CITIZEN = 'GET_LIST_CITIZEN';
+export const GET_CITIZEN_ID = 'GET_CITIZEN_ID';
+export const GET_LOGIN_CITIZEN = 'GET_LOGIN_CITIZEN';

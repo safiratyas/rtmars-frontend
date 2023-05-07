@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './Navbar.scss';
 
-function NavbarPendataan() {
+function NavbarPendataan({ userData }) {
+  console.log(userData)
   return (
     <>
       <Navbar className="navbar-home sticky-top">
@@ -14,7 +15,7 @@ function NavbarPendataan() {
             </Navbar.Brand>
           </Link>
           <Nav className="d-flex">
-            <p>Selamat Datang, Nama</p>
+            <p>Selamat Datang, {userData.nama_lengkap}</p>
           </Nav>
         </Container>
       </Navbar>

@@ -1,25 +1,25 @@
 /* eslint-disable import/prefer-default-export */
 import {
-  GET_CITIZEN_ID
+  GET_LOGIN_CITIZEN
 } from './types';
-import citizen from '../services/getCitizen';
+import citizen from '../services/getCitizenLogin';
 
-export const getListId = (id) => {
+export const getCitizenLogin = () => {
   return async (dispatch) => {
     try {
-      const getListById = await citizen(id);
-      console.log(getListById)
+      const getWhosLogin = await citizen();
+      console.log(getWhosLogin.data)
       await dispatch({
-        type: GET_CITIZEN_ID,
+        type: GET_LOGIN_CITIZEN,
         payload: {
           loading: false,
-          result: await getListById.data.data,
+          result: await getWhosLogin.data,
           error: false,
         },
       });
     } catch (err) {
       dispatch({
-        type: GET_CITIZEN_ID,
+        type: GET_LOGIN_CITIZEN,
         payload: {
           loading: false,
           result: false,

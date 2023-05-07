@@ -6,7 +6,7 @@ const initialState = {
 
 export const getCitizenReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_LIST_CITIZEN':
+    case 'GET_CITIZEN_ID':
       console.log(action.payload);
       return {
         ...state,

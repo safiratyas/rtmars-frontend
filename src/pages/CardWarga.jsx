@@ -5,7 +5,8 @@ import CardSurat from "../components/Cards/Description/CardSurat";
 function DataWarga() {
   return (
     <>
-      <NavbarPendataan />
+      <NavbarPendataan
+      />
       <CardWarga />
       <CardSurat />
     </>
