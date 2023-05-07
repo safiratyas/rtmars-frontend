@@ -57,7 +57,7 @@ function NavbarProfile({ userData, adminData }) {
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="/agenda">Agenda</Nav.Link>
-                <Nav.Link href="#total">Pengurus</Nav.Link>
+                <Nav.Link href="/pendataan/pengurus">Pengurus</Nav.Link>
               </Nav>
               <Nav className="d-flex">
                 <p>Selamat Datang, {user}</p>

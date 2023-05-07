@@ -15,7 +15,7 @@ function NavbarHomepage() {
           </Link>
           <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/pendataan" style={{ textDecoration: 'none' }}>
+              <NavDropdown.Item href="/pendataan/warga" style={{ textDecoration: 'none' }}>
                 Daftar Data Warga
               </NavDropdown.Item>
               <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
@@ -26,7 +26,7 @@ function NavbarHomepage() {
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/agenda">Agenda</Nav.Link>
-            <Nav.Link href="#total">Pengurus</Nav.Link>
+            <Nav.Link href="/pendataan/pengurus">Pengurus</Nav.Link>
           </Nav>
           <Nav className="d-flex">
             <Link to="/register">
