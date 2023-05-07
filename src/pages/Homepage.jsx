@@ -1,12 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Configuration
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useParams, Navigate } from "react-router-dom";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 
 import NavbarHomepage from "../components/Navbar/NavbarHome";
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
-// import NavbarProfile from "../components/Navbar/NavbarProfile";
+import NavbarProfile from "../components/Navbar/NavbarProfile";
 import Header from "../components/Header/Header";
 import CardDescription from "../components/Cards/Description/CardDescription";
 import CardInterest from "../components/Cards/Description/CardInterest";
@@ -44,10 +44,11 @@ function Homepage() {
     handleLogin();
   }, []);
 
+  console.log(isLoggedIn)
+
   return isLoggedIn ? (
     <>
-      <NavbarHomepage />
-      {/* <NavbarProfile /> */}
+      <NavbarProfile userData={userData} />
       <Header />
       <CardSum />
       <CardDescription />
@@ -57,14 +58,9 @@ function Homepage() {
     </>
   ) : (
     <>
-      <NavbarPendataan
-        userData={userData}
-      />
-      {/* <NavbarProfile /> */}
+      <NavbarHomepage />
       <Header />
-      <CardSum />
       <CardDescription />
-      <Faq />
       <CardInterest />
       <Footer />
     </>

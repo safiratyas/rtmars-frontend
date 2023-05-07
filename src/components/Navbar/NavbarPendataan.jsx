@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { userLogout } from '../../redux/actions/logout';
+import { useDispatch } from 'react-redux';
+import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import './Navbar.scss';
 
 function NavbarPendataan({ userData }) {
-  console.log(userData)
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(userLogout());
+    window.location.href = '/login';
+  }
+
   return (
     <>
       <Navbar className="navbar-home sticky-top">
@@ -16,6 +24,9 @@ function NavbarPendataan({ userData }) {
           </Link>
           <Nav className="d-flex">
             <p>Selamat Datang, {userData.nama_lengkap}</p>
+            <Link to="/login">
+              <Button variant="primary" className="nav-signup" onClick={logout}>Log Out</Button>
+            </Link>
           </Nav>
         </Container>
       </Navbar>

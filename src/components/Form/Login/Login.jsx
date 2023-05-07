@@ -34,7 +34,7 @@ function LoginCard() {
       if (loginReponse.status) {
         localStorage.setItem("token", loginReponse.data.token);
 
-        navigate("/")
+        window.location.href = '/';
       }
 
     } catch (err) {
