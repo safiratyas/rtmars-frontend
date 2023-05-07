@@ -1,4 +1,5 @@
 export const GET_CITIZEN_ID = 'GET_CITIZEN_ID';
+export const GET_LOGIN_ADMIN = 'GET_LOGIN_ADMIN';
 export const GET_LOGIN_CITIZEN = 'GET_LOGIN_CITIZEN';
 export const LOGOUT = "LOGOUT";
 export const GET_LIST_CITIZEN = 'GET_LIST_CITIZEN';

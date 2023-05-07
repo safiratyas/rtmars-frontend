@@ -4,7 +4,18 @@ import { userLogout } from '../../redux/actions/logout';
 import { useDispatch } from 'react-redux';
 import { Navbar, Container, Offcanvas, Nav, NavDropdown, Button } from "react-bootstrap"
 
-function NavbarProfile({ userData }) {
+function NavbarProfile({ userData, adminData }) {
+  let user;
+  if (userData == null || userData === {}) {
+    user = adminData.nama_lengkap
+    console.log("betul" + user)
+  }
+
+  if (adminData == null || adminData === {}) {
+    user = userData.nama_lengkap
+    console.log("betul 2" + user)
+  }
+
   const dispatch = useDispatch();
 
   const logout = () => {
@@ -49,7 +60,7 @@ function NavbarProfile({ userData }) {
                 <Nav.Link href="#total">Pengurus</Nav.Link>
               </Nav>
               <Nav className="d-flex">
-                <p>Selamat Datang, {userData.nama_lengkap}</p>
+                <p>Selamat Datang, {user}</p>
                 <Link to="/login">
                   <Button variant="primary" className="nav-signup" onClick={logout}>Log Out</Button>
                 </Link>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
+import { getAdminLogin } from "../redux/actions/getAdminLogin"
 
 import NavbarHomepage from "../components/Navbar/NavbarHome";
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
@@ -17,6 +18,7 @@ import CardSum from "../components/Cards/Description/CardSum";
 function Homepage() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
+  const [adminData, setAdminData] = useState([])
   const [isLoggedIn, setIsLoggedin] = useState(true);
   const token = localStorage.getItem('token');
 
@@ -24,15 +26,27 @@ function Homepage() {
     citizenDataResult,
   } = useSelector((state) => state.getCitizenLoginReducer);
 
+  const {
+    adminDataResult,
+  } = useSelector((state) => state.getAdminLoginReducer);
+
+
   useEffect(() => {
     dispatch(getCitizenLogin());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getAdminLogin());
   }, []);
 
   useEffect(() => {
     if (citizenDataResult) {
       setUserData(citizenDataResult);
     }
-  }, [citizenDataResult]);
+    if (adminDataResult) {
+      setAdminData(adminDataResult);
+    }
+  }, [citizenDataResult, adminDataResult]);
 
   const handleLogin = () => {
     if (!token) {
@@ -44,11 +58,15 @@ function Homepage() {
     handleLogin();
   }, []);
 
-  console.log(isLoggedIn)
+  console.log(userData)
+  console.log(adminData)
 
   return isLoggedIn ? (
     <>
-      <NavbarProfile userData={userData} />
+      <NavbarProfile
+        userData={userData}
+        adminData={adminData}
+      />
       <Header />
       <CardSum />
       <CardDescription />

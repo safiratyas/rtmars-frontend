@@ -72,15 +72,6 @@ function LoginCard() {
                   ref={passwordField}
                 />
               </Form.Group>
-
-              {/* <Form.Group className="mb-3">
-                <Form.Label className="form-label">Kata Kunci</Form.Label>
-                <Form.Control
-                  type="keywords"
-                  placeholder="Kata Kunci Saat Mendaftar"
-                  className="text"
-                />
-              </Form.Group> */}
               {errorResponse.isError && (
                 <Alert variant="danger">{errorResponse.message}</Alert>
               )}
