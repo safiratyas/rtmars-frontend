@@ -1,4 +1,8 @@
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
+import ReactWhatsapp from 'react-whatsapp';
+import {
+  FaWhatsapp,
+} from 'react-icons/fa';
 import './CardDesc.scss';
 
 function CardInterest() {
@@ -7,11 +11,18 @@ function CardInterest() {
       <Card className="interest-description">
         <Row>
           <Col xs={6}>
-            <Button className="interest-btn" href="/login" style={{ marginLeft: '50px', paddingTop: '2.5%' }}>Chat Whatsapp</Button>
+            <Button className="interest-btn" style={{ marginLeft: '50px', paddingTop: '2.5%' }}>
+              <ReactWhatsapp number="+6283877647148" message="Assalammualaikum, perkenalkan nama saya... dan saya ingin bertanya" style={{ backgroundColor: '#002B5B', borderColor: '#002B5B', color: 'white' }}>
+                Chat Whatsapp
+              </ReactWhatsapp>
+              <FaWhatsapp />
+            </Button>
           </Col>
           <Col xs={6}>
             <Card.Body>
-              <Card.Title className="interest-title">Hubungi Pengurus Untuk Mendapatkan Informasi Terlengkap!</Card.Title>
+              <Card.Title className="interest-title">
+                Hubungi Pengurus Untuk Mendapatkan Informasi Terlengkap!
+              </Card.Title>
             </Card.Body>
           </Col>
         </Row>
