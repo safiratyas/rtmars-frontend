@@ -19,6 +19,9 @@ import {
 import {
   getListReligionReducer
 } from './getListReligion';
+import {
+  getListJobReducer
+} from './getListJob';
 
 export default combineReducers({
   getCitizenLoginReducer,
@@ -26,5 +29,6 @@ export default combineReducers({
   getListCitizenReducer,
   getAdminLoginReducer,
   getListAdminReducer,
-  getListReligionReducer
+  getListReligionReducer,
+  getListJobReducer
 });

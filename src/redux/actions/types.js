@@ -5,3 +5,4 @@ export const LOGOUT = "LOGOUT";
 export const GET_LIST_CITIZEN = 'GET_LIST_CITIZEN';
 export const GET_LIST_ADMIN = 'GET_LIST_ADMIN';
 export const GET_LIST_RELIGION = 'GET_LIST_RELIGION';
+export const GET_LIST_JOB = 'GET_LIST_JOB';

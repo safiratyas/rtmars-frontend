@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
 
-function FormWarga({ religion }) {
+function FormWarga({ listReligion, listJob }) {
   return (
     <Container className="mt-5">
       <Form>
@@ -76,9 +76,9 @@ function FormWarga({ religion }) {
               <Form.Label>Agama</Form.Label>
               <select className="form-select">
                 <option hidden>Pilih Salah Satu</option>
-                {religion && religion.map((religi) => {
+                {listReligion && listReligion.map((religion) => {
                   return (
-                    <option value="Pria">{religi.nama}</option>
+                    <option value="Pria">{religion.nama}</option>
                   )
                 })}
               </select>
@@ -97,8 +97,11 @@ function FormWarga({ religion }) {
               <Form.Label>Pekerjaan</Form.Label>
               <select className="form-select">
                 <option hidden>Pilih Salah Satu</option>
-                <option value="Pria">Laki Laki</option>
-                <option value="Wanita">Perempuan</option>
+                {listJob && listJob.map((job) => {
+                  return (
+                    <option value="Pria">{job.nama}</option>
+                  )
+                })}
               </select>
             </Form.Group>
 
