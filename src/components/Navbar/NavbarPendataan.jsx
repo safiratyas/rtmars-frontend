@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { userLogout } from '../../redux/actions/logout';
 import { useDispatch } from 'react-redux';
@@ -9,8 +10,15 @@ function NavbarPendataan({ userData }) {
 
   const logout = () => {
     dispatch(userLogout());
+    localStorage.removeItem('token');
+
     window.location.href = '/login';
   }
+
+  useEffect(() => {
+    dispatch(userLogout());
+  }, []);
+
 
   return (
     <>
@@ -22,8 +30,10 @@ function NavbarPendataan({ userData }) {
               />
             </Navbar.Brand>
           </Link>
-          <Nav className="d-flex">
+          <Nav className="ms-auto" style={{ paddingRight: '10px', paddingBottom: '5px' }}>
             <p>Selamat Datang, {userData.nama_lengkap}</p>
+          </Nav>
+          <Nav className="d-flex">
             <Link to="/login">
               <Button variant="primary" className="nav-signup" onClick={logout}>Log Out</Button>
             </Link>
