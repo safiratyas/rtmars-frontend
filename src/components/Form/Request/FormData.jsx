@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
 
-function FormWarga({ listReligion, listJob }) {
+function FormWarga({ listReligion, listJob, listEducation }) {
+  const [image, setImage] = useState(null);
+  const [uploadedFileURL, setUploadedFileURL] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const handleChangeImage = (e) => {
+    setImage(e.target.files[0]);
+    console.log(e)
+  };
+
+  useEffect(() => {
+    let fileReader = false;
+    let isCancel = false;
+    console.log(image);
+    if (image) {
+      fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        const { result } = e.target;
+        if (result && !isCancel) {
+          setUploadedFileURL(result);
+        }
+      };
+      fileReader.readAsDataURL(image);
+    }
+    return () => {
+      isCancel = true;
+      if (fileReader && fileReader.readyState === 1) {
+        fileReader.abort();
+      }
+    };
+  });
+
   return (
     <Container className="mt-5">
       <Form>
@@ -88,8 +121,11 @@ function FormWarga({ listReligion, listJob }) {
               <Form.Label>Pendidikan</Form.Label>
               <select className="form-select">
                 <option hidden>Pilih Salah Satu</option>
-                <option value="Pria">Laki Laki</option>
-                <option value="Wanita">Perempuan</option>
+                {listEducation && listEducation.map((education) => {
+                  return (
+                    <option value="Pria">{education.nama}</option>
+                  )
+                })}
               </select>
             </Form.Group>
 
@@ -109,14 +145,17 @@ function FormWarga({ listReligion, listJob }) {
               <Form.Label>Kewarganegaraan</Form.Label>
               <select className="form-select">
                 <option hidden>Pilih Salah Satu</option>
-                <option value="Pria">WNI</option>
-                <option value="Wanita">WNA</option>
+                <option value="WNI">WNI</option>
+                <option value="WNA">WNA</option>
               </select>
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Upload KK</Form.Label>
-              <input class="form-control" type="file" id="formFile" />
+              <input class="form-control" type="file" id="formFile"
+                src={uploadedFileURL}
+                onChange={handleChangeImage}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3">
