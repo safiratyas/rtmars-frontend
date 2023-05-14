@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getAllCitizen } from "../redux/actions/getListCitizen"
+import { getListAdmin } from "../redux/actions/getListAdmin";
 
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import CardPengurus from "../components/Cards/Description/CardPengurus";
@@ -9,15 +10,19 @@ import CardPengurus from "../components/Cards/Description/CardPengurus";
 function DataPengurus() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
-  const [listCitizen, setListCitizen] = useState([]);
+  const [listAdmin, setListAdmin] = useState([]);
 
   const {
     citizenDataResult,
   } = useSelector((state) => state.getCitizenLoginReducer);
 
   const {
-    listCitizenResult,
-  } = useSelector((state) => state.getListCitizenReducer);
+    listAdminDataResult,
+  } = useSelector((state) => state.getListAdminReducer);
+
+  useEffect(() => {
+    dispatch(getListAdmin());
+  }, []);
 
   useEffect(() => {
     dispatch(getCitizenLogin());
@@ -31,17 +36,20 @@ function DataPengurus() {
     if (citizenDataResult) {
       setUserData(citizenDataResult);
     }
-    if (listCitizenResult) {
-      setListCitizen(listCitizenResult)
+    if (listAdminDataResult) {
+      setListAdmin(listAdminDataResult)
     }
-  }, [citizenDataResult, listCitizenResult]);
+  }, [citizenDataResult, listAdminDataResult]);
 
-  console.log(listCitizen)
+  console.log(listAdmin)
 
   return (
     <>
       <NavbarPendataan userData={userData} />
-      <CardPengurus listCitizen={listCitizen} />
+      <CardPengurus
+        userData={userData}
+        listAdmin={listAdmin}
+      />
     </>
   )
 }

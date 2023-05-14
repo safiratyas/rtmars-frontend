@@ -30,6 +30,7 @@ $pastel-blue: #8FE3CF;
 .list-description {
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  z-index: 0;
 
   &:hover {
     background-color: #E5FDD1;
@@ -40,6 +41,21 @@ $pastel-blue: #8FE3CF;
     width: 50%;
     border-radius: 8px;
   }
+
+  .button-wa {
+    background-color: $dark-blue;
+    border-color: $dark-blue;
+    color: white;
+    z-index: 1;
+
+    &:hover {
+      background-color: $dark-blue;
+      border-color: $dark-blue;
+      color: white;
+      transform: scale(1.02);
+    }
+  }
+  
 }
 
 .interest-description {

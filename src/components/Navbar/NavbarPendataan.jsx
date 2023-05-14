@@ -10,14 +10,8 @@ function NavbarPendataan({ userData }) {
 
   const logout = () => {
     dispatch(userLogout());
-    localStorage.removeItem('token');
-
     window.location.href = '/login';
   }
-
-  useEffect(() => {
-    dispatch(userLogout());
-  }, []);
 
 
   return (

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default function getCitizen() {
-	return axios
+  return axios
 
-		.get("http://localhost:3000/api/admins")
+    .get("http://localhost:3000/api/admins")
 }

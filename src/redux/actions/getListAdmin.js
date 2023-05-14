@@ -8,12 +8,12 @@ export const getListAdmin = () => {
   return async (dispatch) => {
     try {
       const getListData = await admin();
-      console.log(getListData.data)
+      console.log(getListData.data.data.data)
       await dispatch({
         type: GET_LIST_ADMIN,
         payload: {
           loading: false,
-          result: await getListData.data,
+          result: await getListData.data.data.data,
           error: false,
         },
       });

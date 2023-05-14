@@ -6,7 +6,7 @@ import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getAdminLogin } from "../redux/actions/getAdminLogin"
 
 import NavbarHomepage from "../components/Navbar/NavbarHome";
-import NavbarPendataan from "../components/Navbar/NavbarPendataan";
+// import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import NavbarProfile from "../components/Navbar/NavbarProfile";
 import Header from "../components/Header/Header";
 import CardDescription from "../components/Cards/Description/CardDescription";
@@ -18,7 +18,7 @@ import CardSum from "../components/Cards/Description/CardSum";
 function Homepage() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
-  const [adminData, setAdminData] = useState([])
+  const [adminData, setAdminData] = useState([]);
   const [isLoggedIn, setIsLoggedin] = useState(true);
   const token = localStorage.getItem('token');
 
