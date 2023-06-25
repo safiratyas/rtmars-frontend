@@ -5,17 +5,17 @@ import { useDispatch } from 'react-redux';
 import { Navbar, Container, Offcanvas, Nav, NavDropdown, Button } from "react-bootstrap"
 import './Navbar.scss';
 
-function NavbarProfile({ userData, adminData }) {
-  let user;
-  if (userData == null || userData === {}) {
-    user = adminData.nama_lengkap
-    console.log("betul" + user)
-  }
+function NavbarProfile({ userData }) {
+  // let user;
+  // if (userData == null || userData === {}) {
+  //   user = adminData.nama_lengkap
+  //   console.log("betul" + user)
+  // }
 
-  if (adminData == null || adminData === {}) {
-    user = userData.nama_lengkap
-    console.log("betul 2" + user)
-  }
+  // if (adminData == null || adminData === {}) {
+  //   user = userData.nama_lengkap
+  //   console.log("betul 2" + user)
+  // }
 
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ function NavbarProfile({ userData, adminData }) {
               />
             </Navbar.Brand>
           </Link>
-          <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "30%" }}>
+          <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/pendataan/warga" style={{ textDecoration: 'none' }}>
                 Daftar Data Warga

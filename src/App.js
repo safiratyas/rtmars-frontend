@@ -16,6 +16,7 @@ import DataPengurus from './pages/CardPengurus';
 import FormData from './pages/FormData';
 import SuratWarga from './pages/FormSurat';
 import Agenda from './pages/Agenda';
+import DashboardAdmin from './pages/DashboardAdmin';
 
 // Styles
 import './styles/App.scss';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/input/warga" element={<FormData />} />
           <Route path="/input/surat" element={<SuratWarga />} />
           <Route path="/agenda" element={<Agenda />} />
+          <Route path="/dashboard/admin" element={<DashboardAdmin />} />
         </Routes>
       </BrowserRouter>
     </Provider>

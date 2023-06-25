@@ -8,7 +8,7 @@ function NavbarHomepage() {
       <Navbar className="navbar-home sticky-top">
         <Container>
           <Link to="/">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/home">
               <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="mb-2" alt="list"
               />
             </Navbar.Brand>

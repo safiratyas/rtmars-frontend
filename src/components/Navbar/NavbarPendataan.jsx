@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
 import { userLogout } from '../../redux/actions/logout';
 import { useDispatch } from 'react-redux';
@@ -6,6 +6,7 @@ import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import './Navbar.scss';
 
 function NavbarPendataan({ userData }) {
+  console.log("check data" + userData)
   const dispatch = useDispatch();
 
   const logout = () => {
@@ -19,7 +20,7 @@ function NavbarPendataan({ userData }) {
       <Navbar className="navbar-home sticky-top">
         <Container>
           <Link to="/">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/home">
               <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="mb-2" alt="list" style={{ width: "25%" }}
               />
             </Navbar.Brand>

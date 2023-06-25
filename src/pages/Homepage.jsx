@@ -65,7 +65,6 @@ function Homepage() {
     <>
       <NavbarProfile
         userData={userData}
-        adminData={adminData}
       />
       <Header />
       <CardSum />
