@@ -13,6 +13,7 @@ import Register from './pages/Register';
 import LoginPengurus from './pages/LoginPengurus';
 import DataWarga from './pages/CardWarga';
 import DataPengurus from './pages/CardPengurus';
+import DataSurat from './pages/CardSurat';
 import FormData from './pages/FormData';
 import SuratWarga from './pages/FormSurat';
 import Agenda from './pages/Agenda';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/login-pengurus" element={<LoginPengurus />} />
           <Route path="/pendataan/warga" element={<DataWarga />} />
           <Route path="/pendataan/pengurus" element={<DataPengurus />} />
+          <Route path="/pendataan/surat" element={<DataSurat />} />
           <Route path="/input/warga" element={<FormData />} />
           <Route path="/input/surat" element={<SuratWarga />} />
           <Route path="/agenda" element={<Agenda />} />

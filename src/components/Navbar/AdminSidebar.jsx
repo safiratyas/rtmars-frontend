@@ -22,7 +22,7 @@ function AdminSidebar({ userData }) {
               <NavDropdown.Item href="/pendataan/warga" style={{ textDecoration: 'none' }}>
                 Daftar Data Warga
               </NavDropdown.Item>
-              <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
+              <NavDropdown.Item href="/pendataan/surat" style={{ textDecoration: 'none' }}>
                 Daftar Surat Permohonan
               </NavDropdown.Item>
             </NavDropdown>

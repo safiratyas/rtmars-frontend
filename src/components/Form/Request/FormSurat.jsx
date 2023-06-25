@@ -58,11 +58,10 @@ function FormSurat() {
               <Form.Label className="form-label">Keterangan</Form.Label>
               <textarea class="form-control" placeholder="Untuk Pengajuan Beasiswa"></textarea>
             </Form.Group>
-
-            <Button variant="primary" type="submit" className="input-btn mb-5" style={{ marginTop: "25px" }}>
-              Input Data
-            </Button>
           </Col>
+          <Button variant="primary" type="submit" className="input-btn mb-5" style={{ marginTop: "25px" }}>
+            Input Data
+          </Button>
         </Row>
       </Form>
     </Container >
