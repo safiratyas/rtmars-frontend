@@ -11,10 +11,8 @@ function CardInterest() {
       <Card className="interest-description">
         <Row>
           <Col xs={6}>
-            <Button className="interest-btn" style={{ marginLeft: '50px', paddingTop: '2.5%' }}>
-              <ReactWhatsapp number="+6283877647148" message="Assalammualaikum, perkenalkan nama saya... dan saya ingin bertanya" style={{ backgroundColor: '#002B5B', borderColor: '#002B5B', color: 'white' }}>
-                Chat Whatsapp
-              </ReactWhatsapp>
+            <Button className="interest-btn" href="/pendataan/pengurus" style={{ marginLeft: '50px', paddingTop: '3.5%' }}>
+              Hubungi Melalui Whatsapp
               <FaWhatsapp />
             </Button>
           </Col>
