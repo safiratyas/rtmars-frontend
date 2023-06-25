@@ -5,7 +5,6 @@ import { getAllCitizen } from "../redux/actions/getListCitizen"
 
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import CardWarga from "../components/Cards/Description/CardWarga";
-import CardSurat from "../components/Cards/Description/CardSurat";
 
 function DataWarga() {
   const dispatch = useDispatch();
@@ -43,7 +42,6 @@ function DataWarga() {
     <>
       <NavbarPendataan userData={userData} />
       <CardWarga listCitizen={listCitizen} />
-      <CardSurat />
     </>
   )
 }

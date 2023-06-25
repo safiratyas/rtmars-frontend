@@ -1,20 +1,85 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
+import { useParams } from "react-router-dom";
 
-function FormWarga({ listReligion, listJob, listEducation }) {
+function FormWarga({ listReligion, listJob, listEducation, userData }) {
   const [image, setImage] = useState(null);
   const [uploadedFileURL, setUploadedFileURL] = useState(null);
 
   const dispatch = useDispatch();
+  let params = useParams()
 
   const handleChangeImage = (e) => {
     setImage(e.target.files[0]);
     console.log(e)
   };
 
+  // Declare Field
+  const nameField = useRef("");
+  const genderField = useRef("");
+  const birthPlaceField = useRef("");
+  const dateOfBirthField = useRef("");
+  const addressField = useRef("");
+  const noKKField = useRef("");
+  const noNIKField = useRef("");
+  const religionField = useRef("");
+  const eduField = useRef("");
+  const jobField = useRef("");
+  const citizenshipField = useRef("");
+  const ageField = useRef("");
+
+  const [errorResponse, setErrorResponse] = useState({
+    isError: false,
+    message: ""
+  })
+
+  const submitCitizen = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userToUpdatePayload = {
+        nama_lengkap: nameField.current.value,
+        alamat: addressField.current.value,
+        jenis_kelamin: genderField.current.value,
+        tempat_lahir: birthPlaceField.current.value,
+        tanggal_lahir: birthPlaceField.current.value,
+        umur: ageField.current.value,
+        id_agama: religionField.current.value.id,
+        id_pendidikan: eduField.current.value,
+        id_pekerjaan: jobField.current.value,
+        kewarganegaraan: citizenshipField.current.value,
+      }
+
+      // console.log(userToUpdatePayload + " Lewat Sini")
+
+      const updateRequest = await axios.put(
+        `http://localhost:3000/api/citizens/update/data/${userData.id}`, userToUpdatePayload
+      );
+
+      const loginReponse = updateRequest;
+      console.log(loginReponse);
+
+      if (loginReponse.status) {
+        localStorage.setItem("token", loginReponse.data.token);
+
+        window.location.href = '/';
+      }
+
+    } catch (err) {
+      const response = err.response.data;
+
+      setErrorResponse({
+        isError: true,
+        message: response.message,
+      });
+    }
+  }
+
   useEffect(() => {
+
     let fileReader = false;
     let isCancel = false;
     console.log(image);
@@ -38,7 +103,7 @@ function FormWarga({ listReligion, listJob, listEducation }) {
 
   return (
     <Container className="mt-5">
-      <Form>
+      <Form onSubmit={submitCitizen}>
         <Row>
           <Col xs={6}>
             <Form.Group className="mb-3">
@@ -47,12 +112,18 @@ function FormWarga({ listReligion, listJob, listEducation }) {
                 type="name"
                 placeholder="Jane Doe"
                 className="text"
+                ref={nameField}
+                defaultValue={userData.nama_lengkap}
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Jenis Kelamin</Form.Label>
-              <select className="form-select">
+              <select
+                className="form-select"
+                ref={genderField}
+                defaultValue={userData.jenis_kelamin}
+              >
                 <option hidden>Pilih Salah Satu</option>
                 <option value="Pria">Laki Laki</option>
                 <option value="Wanita">Perempuan</option>
@@ -65,6 +136,8 @@ function FormWarga({ listReligion, listJob, listEducation }) {
                 type="name"
                 placeholder="Jakarta"
                 className="text"
+                ref={birthPlaceField}
+                defaultValue={userData.tempat_lahir}
               />
             </Form.Group>
 
@@ -74,6 +147,8 @@ function FormWarga({ listReligion, listJob, listEducation }) {
                 type="date"
                 placeholder="03/04/1998"
                 className="text"
+                ref={dateOfBirthField}
+                defaultValue={userData.tanggal_lahir}
               />
             </Form.Group>
 
@@ -83,31 +158,30 @@ function FormWarga({ listReligion, listJob, listEducation }) {
                 type="name"
                 placeholder="Jl. Manggarai Selatan"
                 className="text"
+                ref={addressField}
+                defaultValue={userData.alamat}
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label className="form-label">No KK</Form.Label>
+              <Form.Label className="form-label">No Handphone</Form.Label>
               <Form.Control
                 type="name"
                 placeholder="31xxxxxxxxxxxxx"
                 className="text"
+                ref={noKKField}
+                defaultValue={userData.no_hp}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label className="form-label">No NIK</Form.Label>
-              <Form.Control
-                type="name"
-                placeholder="31xxxxxxxxxxxxx"
-                className="text"
-              />
-            </Form.Group>
-          </Col>
-          <Col xs={6}>
             <Form.Group className="mb-3">
               <Form.Label>Agama</Form.Label>
-              <select className="form-select">
+              <select
+                className="form-select"
+                ref={religionField}
+                defaultValue={userData.id_agama}
+              // defaultValue={userData.id_agama.nama}
+              >
                 <option hidden>Pilih Salah Satu</option>
                 {listReligion && listReligion.map((religion) => {
                   return (
@@ -116,10 +190,16 @@ function FormWarga({ listReligion, listJob, listEducation }) {
                 })}
               </select>
             </Form.Group>
+          </Col>
+          <Col xs={6}>
 
             <Form.Group className="mb-3">
               <Form.Label>Pendidikan</Form.Label>
-              <select className="form-select">
+              <select
+                className="form-select"
+                ref={eduField}
+              // defaultValue={userData.id_pendidikan.nama}
+              >
                 <option hidden>Pilih Salah Satu</option>
                 {listEducation && listEducation.map((education) => {
                   return (
@@ -131,7 +211,10 @@ function FormWarga({ listReligion, listJob, listEducation }) {
 
             <Form.Group className="mb-3">
               <Form.Label>Pekerjaan</Form.Label>
-              <select className="form-select">
+              <select
+                className="form-select"
+                ref={jobField}
+              >
                 <option hidden>Pilih Salah Satu</option>
                 {listJob && listJob.map((job) => {
                   return (
@@ -143,11 +226,22 @@ function FormWarga({ listReligion, listJob, listEducation }) {
 
             <Form.Group className="mb-3">
               <Form.Label>Kewarganegaraan</Form.Label>
-              <select className="form-select">
+              <select
+                className="form-select"
+                ref={citizenshipField}
+              >
                 <option hidden>Pilih Salah Satu</option>
                 <option value="WNI">WNI</option>
                 <option value="WNA">WNA</option>
               </select>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Upload Foto</Form.Label>
+              <input class="form-control" type="file" id="formFile"
+                src={uploadedFileURL}
+                onChange={handleChangeImage}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -160,9 +254,11 @@ function FormWarga({ listReligion, listJob, listEducation }) {
 
             <Form.Group className="mb-3">
               <Form.Label>Upload KTP</Form.Label>
-              <input class="form-control" type="file" id="formFile" />
+              <input class="form-control" type="file" id="formFile"
+                src={uploadedFileURL}
+                onChange={handleChangeImage}
+              />
             </Form.Group>
-
 
             <Button variant="primary" type="submit" className="input-btn mb-5" style={{ marginTop: "25px" }}>
               Input Data

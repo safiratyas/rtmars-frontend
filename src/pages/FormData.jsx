@@ -69,6 +69,7 @@ function FormData() {
         listReligion={listReligion}
         listJob={listJob}
         listEducation={listEducation}
+        userData={userData}
       />
     </>
   )
