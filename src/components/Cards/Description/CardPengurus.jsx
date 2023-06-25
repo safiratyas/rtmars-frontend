@@ -25,13 +25,17 @@ function CardPengurus({ listAdmin }) {
                   <Card.Text style={{ color: 'grey' }}>{admin.umur} Tahun</Card.Text>
                   <Card.Text style={{ color: 'grey' }}>{admin.tipe_pengurus}</Card.Text>
                 </Card.Body>
-                <Button variant="secondary" className="button-wa" style={{ fontSize: '15px' }}>
+                {/* <Button variant="secondary" className="button-wa" style={{ fontSize: '15px' }}>
                   {' '}
-                  <ReactWhatsapp number="+6283877647148" message="Assalammualaikum, perkenalkan nama saya... dan saya ingin bertanya" style={{ backgroundColor: '#002B5B', borderColor: '#002B5B', color: 'white' }}>
+                  <ReactWhatsapp number="+6283877647148" message="Assalammualaikum, perkenalkan nama saya... dan saya ingin bertanya" variant="secondary" className="button-wa">
                     Open Whatsapp
                   </ReactWhatsapp>
                   <FaWhatsapp />
-                </Button>
+                </Button> */}
+                <ReactWhatsapp number="+6283877647148" message="Assalammualaikum, perkenalkan nama saya... dan saya ingin bertanya" variant="secondary" className="button-wa">
+                  Kirim Pesan
+                </ReactWhatsapp>
+                {/* <FaWhatsapp /> */}
               </Card>
             </Col>
           )

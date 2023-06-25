@@ -47,6 +47,8 @@ $pastel-blue: #8FE3CF;
     border-color: $dark-blue;
     color: white;
     z-index: 1;
+    width: 100%;
+    height: 100%;
 
     &:hover {
       background-color: $dark-blue;
