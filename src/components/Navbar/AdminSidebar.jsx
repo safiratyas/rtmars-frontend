@@ -11,7 +11,7 @@ function AdminSidebar({ userData }) {
     <>
       <Navbar className="navbar-home sticky-top">
         <Container>
-          <Link to="/">
+          <Link to="/dashboard/admin">
             <Navbar.Brand href="/home">
               <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="mb-2" alt="list"
               />

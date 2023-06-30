@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
+import { getAdminLogin } from "../redux/actions/getAdminLogin";
 import { getAllCitizen } from "../redux/actions/getListCitizen"
 
-import NavbarPendataan from "../components/Navbar/NavbarPendataan";
+import NavbarAdmin from "../components/Navbar/NavbarAdmin";
 import CardWarga from "../components/Cards/Description/CardWarga";
 
 function DataWarga() {
@@ -12,15 +12,15 @@ function DataWarga() {
   const [listCitizen, setListCitizen] = useState([]);
 
   const {
-    citizenDataResult,
-  } = useSelector((state) => state.getCitizenLoginReducer);
+    adminDataResult,
+  } = useSelector((state) => state.getAdminLoginReducer);
 
   const {
     listCitizenResult,
   } = useSelector((state) => state.getListCitizenReducer);
 
   useEffect(() => {
-    dispatch(getCitizenLogin());
+    dispatch(getAdminLogin());
   }, []);
 
   useEffect(() => {
@@ -28,19 +28,19 @@ function DataWarga() {
   }, []);
 
   useEffect(() => {
-    if (citizenDataResult) {
-      setUserData(citizenDataResult);
+    if (adminDataResult) {
+      setUserData(adminDataResult);
     }
     if (listCitizenResult) {
       setListCitizen(listCitizenResult)
     }
-  }, [citizenDataResult, listCitizenResult]);
+  }, [adminDataResult, listCitizenResult]);
 
   console.log(listCitizen)
 
   return (
     <>
-      <NavbarPendataan userData={userData} />
+      <NavbarAdmin userData={userData} />
       <CardWarga listCitizen={listCitizen} />
     </>
   )

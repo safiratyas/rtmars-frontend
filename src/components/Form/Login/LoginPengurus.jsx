@@ -34,7 +34,7 @@ function LoginPengurus() {
       if (loginReponse.status) {
         localStorage.setItem("token", loginReponse.data.token);
 
-        window.location.href = '/';
+        navigate("/dashboard/admin")
       }
 
     } catch (err) {

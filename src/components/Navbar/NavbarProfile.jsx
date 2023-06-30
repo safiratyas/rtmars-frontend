@@ -35,7 +35,7 @@ function NavbarProfile({ userData }) {
               />
             </Navbar.Brand>
           </Link>
-          <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
+          <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "30%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
                 Input Surat Permohonan
