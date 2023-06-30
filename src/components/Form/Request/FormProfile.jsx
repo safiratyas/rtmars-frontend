@@ -25,11 +25,11 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
   const addressField = useRef("");
   const noKKField = useRef("");
   const noNIKField = useRef("");
-  const religionField = useRef("");
-  const eduField = useRef("");
-  const jobField = useRef("");
-  const citizenshipField = useRef("");
+  const noHpField = useRef("");
   const ageField = useRef("");
+  const userPhoto = useRef("");
+  const userKK = useRef("");
+  const userNIK = useRef("");
 
   const [errorResponse, setErrorResponse] = useState({
     isError: false,
@@ -41,22 +41,24 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
 
     try {
       const userToUpdatePayload = {
-        nama_lengkap: nameField.current.value,
+        // nama_lengkap: nameField.current.value,
         alamat: addressField.current.value,
-        jenis_kelamin: genderField.current.value,
+        // jenis_kelamin: genderField.current.value,
         tempat_lahir: birthPlaceField.current.value,
         tanggal_lahir: birthPlaceField.current.value,
         umur: ageField.current.value,
-        id_agama: religionField.current.value.id,
-        id_pendidikan: eduField.current.value,
-        id_pekerjaan: jobField.current.value,
-        kewarganegaraan: citizenshipField.current.value,
+        // no_kk: noKKField.current.value,
+        // no_ktp: noNIKField.current.value,
+        no_hp: noHpField.current.value,
+        foto_warga: userPhoto.current.value,
+        foto_kk: userKK.current.value,
+        foto_ktp: userNIK.current.value
       }
 
       // console.log(userToUpdatePayload + " Lewat Sini")
 
       const updateRequest = await axios.put(
-        `http://localhost:3000/api/citizens/update/data/${userData.id}`, userToUpdatePayload
+        `http://localhost:3000/api/citizens/update/profile/${userData.id}`, userToUpdatePayload
       );
 
       const loginReponse = updateRequest;
@@ -184,7 +186,7 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
                 type="name"
                 placeholder="31xxxxxxxxxxxxx"
                 className="text"
-                ref={noKKField}
+                ref={noHpField}
                 defaultValue={userData.no_hp}
               />
             </Form.Group>
@@ -218,6 +220,7 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
               <input class="form-control" type="file" id="formFile"
                 src={uploadedFileURL}
                 onChange={handleChangeImage}
+                defaultValue={userData.foto_warga}
               />
             </Form.Group>
 
@@ -226,6 +229,7 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
               <input class="form-control" type="file" id="formFile"
                 src={uploadedFileURL}
                 onChange={handleChangeImage}
+                defaultValue={userData.foto_kk}
               />
             </Form.Group>
 
@@ -234,6 +238,7 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
               <input class="form-control" type="file" id="formFile"
                 src={uploadedFileURL}
                 onChange={handleChangeImage}
+                defaultValue={userData.foto_ktp}
               />
             </Form.Group>
 
