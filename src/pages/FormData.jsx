@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getListReligion } from "../redux/actions/getListReligion";

@@ -35,14 +35,11 @@ function NavbarProfile({ userData }) {
           </Link>
           <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/pendataan/warga" style={{ textDecoration: 'none' }}>
-                Daftar Data Warga
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
-                Input Data Warga
-              </NavDropdown.Item>
               <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
                 Input Surat Permohonan
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
+                Edit Data Diri
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/agenda">Agenda</Nav.Link>
