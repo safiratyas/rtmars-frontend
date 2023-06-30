@@ -14,6 +14,7 @@ import LoginPengurus from './pages/LoginPengurus';
 import DataWarga from './pages/CardWarga';
 import DataPengurus from './pages/CardPengurus';
 import DataSurat from './pages/CardSurat';
+import DataProfile from './pages/Profile';
 import FormData from './pages/FormData';
 import SuratWarga from './pages/FormSurat';
 import Agenda from './pages/Agenda';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/pendataan/surat/:id" element={<DataSurat />} />
           <Route path="/input/warga" element={<FormData />} />
           <Route path="/input/surat" element={<SuratWarga />} />
+          <Route path="/input/profile" element={<DataProfile />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/dashboard/admin" element={<DashboardAdmin />} />
         </Routes>

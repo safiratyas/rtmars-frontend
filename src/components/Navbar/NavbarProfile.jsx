@@ -43,7 +43,7 @@ function NavbarProfile({ userData }) {
               <NavDropdown.Item href={link} style={{ textDecoration: 'none' }}>
                 Daftar Surat Permohonan
               </NavDropdown.Item>
-              <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
+              <NavDropdown.Item href="/input/profile" style={{ textDecoration: 'none' }}>
                 Edit Data Diri
               </NavDropdown.Item>
             </NavDropdown>
