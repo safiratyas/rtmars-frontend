@@ -3,11 +3,13 @@ import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import FormSurat from "../components/Form/Request/FormSurat";
 import CardSurat from "../components/Cards/Description/CardSurat";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
-import { getAllDocument } from "../redux/actions/getListDocument";
+import { getDocumentID } from "../redux/actions/getDocument";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 function SuratWarga() {
   const dispatch = useDispatch();
+  const params = useParams();
   const [userData, setUserData] = useState([]);
   const [documentData, setDocumentData] = useState([]);
 
@@ -16,7 +18,7 @@ function SuratWarga() {
   } = useSelector((state) => state.getCitizenLoginReducer);
 
   const {
-    listDocResult,
+    documentIDResult,
   } = useSelector((state) => state.getListDocumentReducer);
 
   useEffect(() => {
@@ -24,25 +26,26 @@ function SuratWarga() {
   }, []);
 
   useEffect(() => {
-    dispatch(listDocResult());
+    dispatch(getDocumentID(params.id));
   }, []);
 
   useEffect(() => {
     if (citizenDataResult) {
       setUserData(citizenDataResult);
     }
-    if (listDocResult) {
-      setDocumentData(listDocResult);
+    if (documentIDResult) {
+      setDocumentData(documentIDResult);
     }
-  }, [citizenDataResult, listDocResult]);
+  }, [citizenDataResult, documentIDResult]);
+
   return (
     <>
       <NavbarPendataan userData={userData} />
       <FormSurat userData={userData} />
-      <CardSurat
+      {/* <CardSurat
         userData={userData}
         documentData={documentData}
-      />
+      /> */}
     </>
   )
 }

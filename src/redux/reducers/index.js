@@ -25,6 +25,12 @@ import {
 import {
   getListEducationReducer
 } from './getListEducation';
+import {
+  getListDocumentReducer
+} from './getListDocument'
+import {
+  getDocumentReducer
+} from './getDocument'
 
 export default combineReducers({
   getCitizenLoginReducer,
@@ -34,5 +40,7 @@ export default combineReducers({
   getListAdminReducer,
   getListReligionReducer,
   getListJobReducer,
-  getListEducationReducer
+  getListEducationReducer,
+  getListDocumentReducer,
+  getDocumentReducer
 });

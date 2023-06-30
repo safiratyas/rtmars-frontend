@@ -5,7 +5,7 @@ import {
 const initialState = {
   listDocLoading: false,
   listDocResult: false,
-  listCitizenResult: false,
+  listDocError: false,
 };
 
 export const getListDocumentReducer = (state = initialState, action) => {
@@ -16,7 +16,7 @@ export const getListDocumentReducer = (state = initialState, action) => {
         ...state,
         listDocLoading: action.payload.loading,
           listDocResult: action.payload.result,
-          listCitizenResult: action.payload.error,
+          listDocError: action.payload.error,
       };
     default:
       return state;

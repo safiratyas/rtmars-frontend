@@ -35,7 +35,7 @@ function App() {
           <Route path="/login-pengurus" element={<LoginPengurus />} />
           <Route path="/pendataan/warga" element={<DataWarga />} />
           <Route path="/pendataan/pengurus" element={<DataPengurus />} />
-          <Route path="/pendataan/surat" element={<DataSurat />} />
+          <Route path="/pendataan/surat/:id" element={<DataSurat />} />
           <Route path="/input/warga" element={<FormData />} />
           <Route path="/input/surat" element={<SuratWarga />} />
           <Route path="/agenda" element={<Agenda />} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { userLogout } from '../../redux/actions/logout';
 import { useDispatch } from 'react-redux';
 import { Navbar, Container, Offcanvas, Nav, NavDropdown, Button } from "react-bootstrap"
@@ -18,6 +18,8 @@ function NavbarProfile({ userData }) {
   // }
 
   const dispatch = useDispatch();
+  const params = useParams();
+  const link = `/pendataan/surat/${userData.id}`
 
   const logout = () => {
     dispatch(userLogout());
@@ -38,6 +40,9 @@ function NavbarProfile({ userData }) {
               <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
                 Input Surat Permohonan
               </NavDropdown.Item>
+              <NavDropdown.Item href={link} style={{ textDecoration: 'none' }}>
+                Daftar Surat Permohonan
+              </NavDropdown.Item>
               <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
                 Edit Data Diri
               </NavDropdown.Item>
@@ -54,7 +59,7 @@ function NavbarProfile({ userData }) {
             </Link>
           </Nav>
         </Container>
-      </Navbar>
+      </Navbar >
     </>
   )
 }

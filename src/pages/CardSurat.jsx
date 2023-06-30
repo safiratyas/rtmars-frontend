@@ -1,47 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
-import { getAllCitizen } from "../redux/actions/getListCitizen"
+// import { getDocumentID } from "../redux/actions/getDocument";
+import { getAllDocument } from "../redux/actions/getListDocument";
+import { useParams } from "react-router-dom";
 
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import CardSurat from "../components/Cards/Description/CardSurat"
 
 function DataSurat() {
   const dispatch = useDispatch();
+  const params = useParams();
   const [userData, setUserData] = useState([]);
-  const [listCitizen, setListCitizen] = useState([]);
+  const [documentData, setDocumentData] = useState([]);
 
+  const id = params.id
   const {
     citizenDataResult,
   } = useSelector((state) => state.getCitizenLoginReducer);
 
   const {
-    listCitizenResult,
-  } = useSelector((state) => state.getListCitizenReducer);
+    listDocResult,
+  } = useSelector((state) => state.getListDocumentReducer);
 
   useEffect(() => {
     dispatch(getCitizenLogin());
   }, []);
 
   useEffect(() => {
-    dispatch(getAllCitizen());
+    dispatch(getAllDocument());
   }, []);
 
   useEffect(() => {
     if (citizenDataResult) {
       setUserData(citizenDataResult);
     }
-    if (listCitizenResult) {
-      setListCitizen(listCitizenResult)
+    if (listDocResult) {
+      setDocumentData(listDocResult);
     }
-  }, [citizenDataResult, listCitizenResult]);
 
-  console.log(listCitizen)
+  }, [citizenDataResult, listDocResult]);
+
+  console.log(documentData + " lewat siniiiiiiiiii")
 
   return (
     <>
       <NavbarPendataan userData={userData} />
-      <CardSurat />
+      <CardSurat
+        userData={userData}
+        documentData={documentData}
+      />
     </>
   )
 }

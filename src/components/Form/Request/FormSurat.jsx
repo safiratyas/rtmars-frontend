@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Alert, Card, Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
 
 function FormSurat({ userData }) {
   const navigate = useNavigate();
+  const params = useParams();
 
   const dateField = useRef("");
   const documentField = useRef("");
@@ -79,7 +80,7 @@ function FormSurat({ userData }) {
       if (listResponse.status) {
         localStorage.setItem("token", listResponse.data.token);
 
-        navigate("/input/surat")
+        navigate(`/pendataan/surat/${userData.id}`)
       }
 
     } catch (err) {
