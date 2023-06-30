@@ -214,15 +214,29 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
                 disabled
               />
             </Form.Group>
-
-            <Form.Group className="mb-3">
+            {image && (
+              <img src={image} alt="" />
+            )}
+            {uploadedFileURL
+              ? (
+                <img src={uploadedFileURL} alt="preview" className="img-preview-wrapper" />
+              ) : null}
+            <div className="avatar">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleChangeImage}
+                className="avatar-image"
+              />
+            </div>
+            {/* <Form.Group className="mb-3">
               <Form.Label>Upload Foto</Form.Label>
               <input class="form-control" type="file" id="formFile"
                 src={uploadedFileURL}
                 onChange={handleChangeImage}
                 defaultValue={userData.foto_warga}
               />
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group className="mb-3">
               <Form.Label>Upload KK</Form.Label>

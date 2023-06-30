@@ -1,72 +1,102 @@
 import React, { useState, useEffect } from "react";
+import { Navigate } from 'react-router-dom';
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
-import { getListReligion } from "../redux/actions/getListReligion";
-import { getListJob } from "../redux/actions/getListJob";
-import { getListEducation } from "../redux/actions/getListEducation";
 import { useDispatch, useSelector } from "react-redux";
+import { updateListProfile } from "../redux/actions/updateCitizen";
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import FormProfile from "../components/Form/Request/FormProfile";
 
 function Profile() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
-  const [listReligion, setlistReligion] = useState([]);
-  const [listJob, setListJob] = useState([]);
-  const [listEducation, setListEducation] = useState([]);
+  const [dateOfBirth, setDateofBirth] = useState('');
+  const [placeOfBirth, setPlaceOfBirth] = useState('');
+  const [address, setAddress] = useState('');
+  const [age, setAge] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
+  // Upload Image
+  // Upload Image
+  const [image, setImage] = useState(null);
+  const [uploadedFileURL, setUploadedFileURL] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const {
     citizenDataResult,
   } = useSelector((state) => state.getCitizenLoginReducer);
 
   const {
-    listReligionResult,
-  } = useSelector((state) => state.getListReligionReducer);
+    profileLoading,
+    profileResult,
+    profileError
+  } = useSelector((state) => state.getProfileReducer);
 
-  const {
-    listJobResult,
-  } = useSelector((state) => state.getListJobReducer);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const body = {
+      tempat_lahir: placeOfBirth,
+      tanggal_lahir: dateOfBirth,
+      no_hp: phoneNumber,
+      alamat: address,
+      umur: age
+    };
+    await dispatch(updateListProfile(image, body));
+  }
 
-  const {
-    listEducationResult,
-  } = useSelector((state) => state.getListEducationReducer);
+  const handleChangeImage = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   useEffect(() => {
     dispatch(getCitizenLogin());
   }, []);
 
   useEffect(() => {
-    dispatch(getListReligion());
-  }, []);
-
-  useEffect(() => {
-    dispatch(getListJob());
-  }, []);
-
-  useEffect(() => {
-    dispatch(getListEducation());
-  }, []);
-
-  useEffect(() => {
     if (citizenDataResult) {
       setUserData(citizenDataResult);
     }
-    if (listReligionResult) {
-      setlistReligion(listReligionResult);
+  }, [citizenDataResult]);
+
+  useEffect(() => {
+    console.log(profileLoading, profileResult);
+    if (profileLoading) {
+      setLoading(true);
+    } else if (profileResult) {
+      setLoading(false);
+      window.location.reload();
+      console.log(profileResult);
+    } else if (profileError) {
+      console.log(profileError);
     }
-    if (listJobResult) {
-      setListJob(listJobResult);
+    let fileReader = false;
+    let isCancel = false;
+    console.log(image);
+    if (image) {
+      fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        const { result } = e.target;
+        if (result && !isCancel) {
+          setUploadedFileURL(result);
+        }
+      };
+      fileReader.readAsDataURL(image);
     }
-    if (listEducationResult) {
-      setListEducation(listEducationResult);
-    }
-  }, [citizenDataResult, listReligionResult, listJobResult, listEducationResult]);
+    return () => {
+      isCancel = true;
+      if (fileReader && fileReader.readyState === 1) {
+        fileReader.abort();
+      }
+    };
+  });
+
+  if (profileResult) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <>
       <NavbarPendataan userData={userData} />
       <FormProfile
-        listReligion={listReligion}
-        listJob={listJob}
-        listEducation={listEducation}
         userData={userData}
       />
     </>

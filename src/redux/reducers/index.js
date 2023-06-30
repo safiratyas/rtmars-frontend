@@ -31,6 +31,9 @@ import {
 import {
   getDocumentReducer
 } from './getDocument'
+import {
+  getProfileReducer
+} from './updateCitizen'
 
 export default combineReducers({
   getCitizenLoginReducer,
@@ -42,5 +45,6 @@ export default combineReducers({
   getListJobReducer,
   getListEducationReducer,
   getListDocumentReducer,
-  getDocumentReducer
+  getDocumentReducer,
+  getProfileReducer
 });
