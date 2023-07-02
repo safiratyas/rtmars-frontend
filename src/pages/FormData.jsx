@@ -5,7 +5,7 @@ import { getListReligion } from "../redux/actions/getListReligion";
 import { getListJob } from "../redux/actions/getListJob";
 import { getListEducation } from "../redux/actions/getListEducation";
 import { useDispatch, useSelector } from "react-redux";
-import NavbarPendataan from "../components/Navbar/NavbarPendataan";
+import NavbarAdmin from "../components/Navbar/NavbarAdmin";
 import FormRequest from "../components/Form/Request/FormData";
 
 function FormData() {
@@ -65,7 +65,7 @@ function FormData() {
   console.log(listEducation)
   return (
     <>
-      <NavbarPendataan userData={userData} />
+      <NavbarAdmin userData={userData} />
       <FormRequest
         listReligion={listReligion}
         listJob={listJob}
