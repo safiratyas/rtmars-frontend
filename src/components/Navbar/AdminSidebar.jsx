@@ -4,6 +4,7 @@ import { userLogout } from '../../redux/actions/logout';
 import { useDispatch } from 'react-redux';
 import { Container, Nav, Navbar, Button, NavDropdown } from 'react-bootstrap';
 import './Navbar.scss';
+import CardToast from "../Cards/Notification/CardToast";
 
 function AdminSidebar({ userData }) {
 
@@ -36,11 +37,10 @@ function AdminSidebar({ userData }) {
             </NavDropdown>
           </Nav>
           <Nav className="ms-auto">
-            <Nav className="d-flex">
-              <Link to="/login">
-                <Button variant="primary" className="nav-signup">Log Out</Button>
-              </Link>
-            </Nav>
+            <Link to="/login">
+              <Button variant="primary" className="nav-signup">Log Out</Button>
+            </Link>
+            <CardToast />
           </Nav>
         </Container>
       </Navbar>

@@ -1,0 +1,21 @@
+.card-items-offering {
+  background: #FFFFFF;
+  /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15); */
+  border-radius: 10px;
+  margin-bottom: 5%;
+  max-height: 300px;
+}
+
+.nav-signup {
+  background-color: $dark-blue;
+  border-color: $dark-blue;
+  color: white;
+  margin-left: 50%;
+
+  &:hover {
+    background-color: $dark-blue;
+    border-color: $dark-blue;
+    color: white;
+    transform: scale(1.02);
+  }
+}

@@ -1,8 +1,19 @@
+/* eslint-disable no-unused-vars */
 // import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import './CardDesc.scss';
 
-function CardSum() {
+function CardSum({ citizenData }) {
+  console.log(citizenData)
+
+  // Filtering Gender (Pria)
+  const checkMen = citizenData.filter(data => data.jenis_kelamin === "Pria");
+  const totalMen = checkMen.length
+
+  // Filtering Gender (Wanita)
+  const checkWomen = citizenData.filter(data => data.jenis_kelamin === "Wanita");
+  const totalWomen = checkWomen.length
+
   return (
     <div className="div-sum">
       <Container>
@@ -15,17 +26,17 @@ function CardSum() {
           <Col>
             <img src={process.env.PUBLIC_URL + '/images/male.gif'} className="mx-auto" alt="list" style={{ width: "50%" }} />
             <h5 style={{ fontWeight: "bold" }}>Pria </h5>
-            <p>100000</p>
+            <p>{totalMen}</p>
           </Col>
           <Col>
             <img src={process.env.PUBLIC_URL + '/images/female.gif'} className="mx-auto" alt="list" style={{ width: "50%" }} />
             <h5 style={{ fontWeight: "bold" }}>Wanita </h5>
-            <p>100000</p>
+            <p>{totalWomen}</p>
           </Col>
           <Col>
             <img src={process.env.PUBLIC_URL + '/images/globe.gif'} className="mx-auto" alt="list" style={{ width: "50%" }} />
             <h5 style={{ fontWeight: "bold" }}>Total </h5>
-            <p>100000</p>
+            <p>{citizenData.length}</p>
           </Col>
         </Row>
       </Container>

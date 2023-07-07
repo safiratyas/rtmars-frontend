@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import FormSurat from "../components/Form/Request/FormSurat";
-import CardSurat from "../components/Cards/Description/CardSurat";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getDocumentID } from "../redux/actions/getDocument";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,10 +41,6 @@ function SuratWarga() {
     <>
       <NavbarPendataan userData={userData} />
       <FormSurat userData={userData} />
-      {/* <CardSurat
-        userData={userData}
-        documentData={documentData}
-      /> */}
     </>
   )
 }

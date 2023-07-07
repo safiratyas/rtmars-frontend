@@ -17,7 +17,7 @@ function CardSurat({ documentData, userData }) {
             if (userData.id === document.id_warga) {
               return (
                 <Col>
-                  <Card className="list-description" style={{ height: "250px" }}>
+                  <Card className="list-description" style={{ height: "100%" }}>
                     <img src={userData.foto_warga} className="mx-auto" alt="list" />
                     <Card.Body>
                       <Card.Title style={{ fontWeight: "bold" }}>{userData.nama_lengkap}</Card.Title>
