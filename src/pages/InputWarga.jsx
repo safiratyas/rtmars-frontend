@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { getAdminLogin } from "../redux/actions/getAdminLogin";
+import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getListReligion } from "../redux/actions/getListReligion";
 import { getListJob } from "../redux/actions/getListJob";
 import { getListEducation } from "../redux/actions/getListEducation";
@@ -11,6 +12,7 @@ import FormInput from "../components/Form/Request/FormInput";
 function InputWarga() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
+  const [citizenData, setCitizenData] = useState([]);
   const [listReligion, setlistReligion] = useState([]);
   const [listJob, setListJob] = useState([]);
   const [listEducation, setListEducation] = useState([]);
@@ -18,6 +20,10 @@ function InputWarga() {
   const {
     adminDataResult,
   } = useSelector((state) => state.getAdminLoginReducer);
+
+  const {
+    citizenDataResult,
+  } = useSelector((state) => state.getCitizenLoginReducer);
 
   const {
     listReligionResult,
@@ -36,6 +42,10 @@ function InputWarga() {
   }, []);
 
   useEffect(() => {
+    dispatch(getCitizenLogin());
+  }, []);
+
+  useEffect(() => {
     dispatch(getListReligion());
   }, []);
 
@@ -51,6 +61,9 @@ function InputWarga() {
     if (adminDataResult) {
       setUserData(adminDataResult);
     }
+    if (citizenDataResult) {
+      setCitizenData(citizenDataResult);
+    }
     if (listReligionResult) {
       setlistReligion(listReligionResult);
     }
@@ -60,7 +73,7 @@ function InputWarga() {
     if (listEducationResult) {
       setListEducation(listEducationResult);
     }
-  }, [adminDataResult, listReligionResult, listJobResult, listEducationResult]);
+  }, [adminDataResult, citizenDataResult, listReligionResult, listJobResult, listEducationResult]);
 
   console.log(listEducation)
   return (
@@ -71,6 +84,7 @@ function InputWarga() {
         listJob={listJob}
         listEducation={listEducation}
         userData={userData}
+        citizenData={citizenData}
       />
     </>
   )

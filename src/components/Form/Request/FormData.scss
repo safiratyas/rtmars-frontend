@@ -3,17 +3,21 @@ $dark-green: #06A788;
 $soft-blue: #8FE3CF;
 
 .input-btn {
-    width: 100%;
-    background-color: $dark-green !important;
-    border-color: $dark-green !important;
-    border-radius: 16px !important;
-    height: 45px;
-    color: white;
+  width: 100%;
+  background-color: $dark-green !important;
+  border-color: $dark-green !important;
+  border-radius: 16px !important;
+  height: 45px;
+  color: white;
 
-    &:hover {
-      background-color: $dark-green;
-      border-color: $dark-green;
-      transform: scale(1.02);
-      color: white;
-    }
+  &:hover {
+    background-color: $dark-green;
+    border-color: $dark-green;
+    transform: scale(1.02);
+    color: white;
   }
+}
+
+// .avatar-image {
+//   width: 10%;
+// }

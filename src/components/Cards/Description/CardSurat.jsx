@@ -18,10 +18,9 @@ function CardSurat({ documentData, userData }) {
               return (
                 <Col>
                   <Card className="list-description" style={{ height: "100%" }}>
-                    <img src={userData.foto_warga} className="mx-auto" alt="list" />
+                    {/* <img src={userData.foto_warga} className="mx-auto" alt="list" /> */}
                     <Card.Body>
-                      <Card.Title style={{ fontWeight: "bold" }}>{userData.nama_lengkap}</Card.Title>
-                      <Card.Text style={{ color: 'grey' }}>{document.jenis_dokumen}</Card.Text>
+                      <Card.Title style={{ fontWeight: "bold" }}>{document.jenis_dokumen}</Card.Title>
                       <Card.Text style={{ color: 'grey' }}>{document.tanggal_pengajuan}</Card.Text>
                       <Card.Text style={{ color: 'grey' }}>{document.keterangan}</Card.Text>
                     </Card.Body>

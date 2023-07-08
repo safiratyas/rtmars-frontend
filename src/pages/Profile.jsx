@@ -68,25 +68,25 @@ function Profile() {
     } else if (profileError) {
       console.log(profileError);
     }
-    let fileReader = false;
-    let isCancel = false;
-    console.log(image);
-    if (image) {
-      fileReader = new FileReader();
-      fileReader.onload = (e) => {
-        const { result } = e.target;
-        if (result && !isCancel) {
-          setUploadedFileURL(result);
-        }
-      };
-      fileReader.readAsDataURL(image);
-    }
-    return () => {
-      isCancel = true;
-      if (fileReader && fileReader.readyState === 1) {
-        fileReader.abort();
-      }
-    };
+    // let fileReader = false;
+    // let isCancel = false;
+    // console.log(image);
+    // if (image) {
+    //   fileReader = new FileReader();
+    //   fileReader.onload = (e) => {
+    //     const { result } = e.target;
+    //     if (result && !isCancel) {
+    //       setUploadedFileURL(result);
+    //     }
+    //   };
+    //   fileReader.readAsDataURL(image);
+    // }
+    // return () => {
+    //   isCancel = true;
+    //   if (fileReader && fileReader.readyState === 1) {
+    //     fileReader.abort();
+    //   }
+    // };
   });
 
   if (profileResult) {

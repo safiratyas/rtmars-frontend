@@ -41,7 +41,7 @@ function App() {
           <Route path="/pendataan/surat/:id" element={<DataSurat />} />
           <Route path="/input/warga" element={<InputWarga />} />
           <Route path="/input/surat" element={<SuratWarga />} />
-          <Route path="/input/profile" element={<DataProfile />} />
+          <Route path="/input/profile/:id" element={<DataProfile />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/dashboard/admin" element={<DashboardAdmin />} />
         </Routes>

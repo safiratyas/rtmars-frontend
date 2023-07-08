@@ -116,7 +116,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
                 placeholder="Jane Doe"
                 className="text"
                 ref={nameField}
-                defaultValue={userData.nama_lengkap}
               />
             </Form.Group>
 
@@ -125,7 +124,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
               <select
                 className="form-select"
                 ref={genderField}
-                defaultValue={userData.jenis_kelamin}
               >
                 <option hidden>Pilih Salah Satu</option>
                 <option value="Pria">Laki Laki</option>
@@ -140,7 +138,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
                 placeholder="Jakarta"
                 className="text"
                 ref={birthPlaceField}
-                defaultValue={userData.tempat_lahir}
               />
             </Form.Group>
 
@@ -151,7 +148,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
                 placeholder="03/04/1998"
                 className="text"
                 ref={dateOfBirthField}
-                defaultValue={userData.tanggal_lahir}
               />
             </Form.Group>
 
@@ -162,7 +158,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
                 placeholder="Jl. Manggarai Selatan"
                 className="text"
                 ref={addressField}
-                defaultValue={userData.alamat}
               />
             </Form.Group>
 
@@ -173,7 +168,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
                 placeholder="31xxxxxxxxxxxxx"
                 className="text"
                 ref={noKKField}
-                defaultValue={userData.no_kk}
               />
             </Form.Group>
 
@@ -184,7 +178,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
                 placeholder="31xxxxxxxxxxxxx"
                 className="text"
                 ref={noNIKField}
-                defaultValue={userData.no_nik}
               />
             </Form.Group>
 
@@ -195,7 +188,6 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
               <select
                 className="form-select"
                 ref={religionField}
-                defaultValue={userData.id_agama}
               // defaultValue={userData.id_agama.nama}
               >
                 <option hidden>Pilih Salah Satu</option>

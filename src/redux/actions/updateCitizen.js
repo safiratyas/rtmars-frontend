@@ -13,18 +13,22 @@ export const updateListProfile = (image, body) => {
     try {
       // GET API USER
       const getUserById = await getCitizenLogin();
+      console.log(getUserById)
       const cloudinaryUpload = new FormData();
       cloudinaryUpload.append('picture', image);
       const resultCloudinary = await updateUserCloudinary(getUserById.data.id, cloudinaryUpload);
       const bodyUser = {
+        jenis_kelamin: body.jenis_kelamin,
         tempat_lahir: body.tempat_lahir,
         tanggal_lahir: body.tanggal_lahir,
         umur: body.umur,
+        no_kk: body.no_kk,
+        no_nik: body.no_nik,
         alamat: body.alamat,
         no_hp: body.no_hp,
         foto_warga: resultCloudinary.data.url,
-        foto_kk: resultCloudinary.data.url,
-        foto_ktp: resultCloudinary.data.url,
+        // foto_kk: resultCloudinary.data.url,
+        // foto_ktp: resultCloudinary.data.url,
       };
       const getUserProfile = await updateUserDetail(getUserById.data.id, bodyUser);
       console.log(getCitizenLogin.data);

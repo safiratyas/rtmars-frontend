@@ -1,86 +1,79 @@
-import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { updateListProfile } from '../../../redux/actions/updateCitizen';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
 import { useParams } from "react-router-dom";
 
-function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
+function ProfileWarga({ userData }) {
+  // Data Profile
+  const [address, setAddress] = useState('');
+  const [age, setAge] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [dateOfBirth, setDateofBirth] = useState('');
+  const [gender, setGender] = useState('');
+  const [noKK, setNoKK] = useState('');
+  const [noNIK, setNoNIK] = useState('');
+  const [birthPlace, setBirthPlace] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  // Upload Image
   const [image, setImage] = useState(null);
+  // const [image2, setImage2] = useState(null);
+  // const [image3, setImage3] = useState(null);
   const [uploadedFileURL, setUploadedFileURL] = useState(null);
+  // const [uploadedFileURL2, setUploadedFileURL2] = useState(null);
+  // const [uploadedFileURL3, setUploadedFileURL3] = useState(null);
 
   const dispatch = useDispatch();
-  let params = useParams()
 
   const handleChangeImage = (e) => {
     setImage(e.target.files[0]);
     console.log(e)
   };
 
-  // Declare Field
-  const nameField = useRef("");
-  const genderField = useRef("");
-  const birthPlaceField = useRef("");
-  const dateOfBirthField = useRef("");
-  const addressField = useRef("");
-  const noKKField = useRef("");
-  const noNIKField = useRef("");
-  const noHpField = useRef("");
-  const ageField = useRef("");
-  const userPhoto = useRef("");
-  const userKK = useRef("");
-  const userNIK = useRef("");
+  // const handleChangeImage2 = (e) => {
+  //   setImage2(e.target.files[0]);
+  //   console.log(e)
+  // };
 
-  const [errorResponse, setErrorResponse] = useState({
-    isError: false,
-    message: ""
-  })
+  // const handleChangeImage3 = (e) => {
+  //   setImage3(e.target.files[0]);
+  //   console.log(e)
+  // };
 
-  const submitCitizen = async (e) => {
+  const {
+    profileLoading,
+    profileResult,
+    profileError,
+  } = useSelector((state) => { return state.getProfileReducer; });
+
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    try {
-      const userToUpdatePayload = {
-        // nama_lengkap: nameField.current.value,
-        alamat: addressField.current.value,
-        // jenis_kelamin: genderField.current.value,
-        tempat_lahir: birthPlaceField.current.value,
-        tanggal_lahir: birthPlaceField.current.value,
-        umur: ageField.current.value,
-        // no_kk: noKKField.current.value,
-        // no_ktp: noNIKField.current.value,
-        no_hp: noHpField.current.value,
-        foto_warga: userPhoto.current.value,
-        foto_kk: userKK.current.value,
-        foto_ktp: userNIK.current.value
-      }
-
-      // console.log(userToUpdatePayload + " Lewat Sini")
-
-      const updateRequest = await axios.put(
-        `http://localhost:3000/api/citizens/update/profile/${userData.id}`, userToUpdatePayload
-      );
-
-      const loginReponse = updateRequest;
-      console.log(loginReponse);
-
-      if (loginReponse.status) {
-        localStorage.setItem("token", loginReponse.data.token);
-
-        window.location.href = '/';
-      }
-
-    } catch (err) {
-      const response = err.response.data;
-
-      setErrorResponse({
-        isError: true,
-        message: response.message,
-      });
-    }
+    const body = {
+      alamat: address,
+      jenis_kelamin: gender,
+      no_hp: phoneNumber,
+      tempat_lahir: birthPlace,
+      tanggal_lahir: "1997-10-22",
+      no_kk: noKK,
+      no_nik: noNIK,
+      umur: parseInt(age)
+    };
+    await dispatch(updateListProfile(image, body));
   }
 
   useEffect(() => {
+    console.log(profileResult);
+    if (profileLoading) {
+      setLoading(true);
+    } else if (profileResult) {
+      setLoading(false);
+      window.location.reload();
+      console.log(profileResult);
+    } else if (profileError) {
+      console.log(profileError);
+    }
     let fileReader = false;
     let isCancel = false;
     console.log(image);
@@ -102,9 +95,53 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
     };
   });
 
+  // useEffect(() => {
+  //   let fileReader = false;
+  //   let isCancel = false;
+  //   console.log(image2);
+  //   if (image2) {
+  //     fileReader = new FileReader();
+  //     fileReader.onload = (e) => {
+  //       const { result } = e.target;
+  //       if (result && !isCancel) {
+  //         setUploadedFileURL2(result);
+  //       }
+  //     };
+  //     fileReader.readAsDataURL(image2);
+  //   }
+  //   return () => {
+  //     isCancel = true;
+  //     if (fileReader && fileReader.readyState === 1) {
+  //       fileReader.abort();
+  //     }
+  //   };
+  // });
+
+  // useEffect(() => {
+  //   let fileReader = false;
+  //   let isCancel = false;
+  //   console.log(image2);
+  //   if (image3) {
+  //     fileReader = new FileReader();
+  //     fileReader.onload = (e) => {
+  //       const { result } = e.target;
+  //       if (result && !isCancel) {
+  //         setUploadedFileURL3(result);
+  //       }
+  //     };
+  //     fileReader.readAsDataURL(image3);
+  //   }
+  //   return () => {
+  //     isCancel = true;
+  //     if (fileReader && fileReader.readyState === 1) {
+  //       fileReader.abort();
+  //     }
+  //   };
+  // });
+
   return (
     <Container className="mt-5">
-      <Form onSubmit={submitCitizen}>
+      <Form onSubmit={handleSubmit}>
         <Row>
           <Col xs={6}>
             <Form.Group className="mb-3">
@@ -113,7 +150,6 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
                 type="name"
                 placeholder="Jane Doe"
                 className="text"
-                ref={nameField}
                 defaultValue={userData.nama_lengkap}
                 disabled
               />
@@ -123,9 +159,8 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
               <Form.Label>Jenis Kelamin</Form.Label>
               <select
                 className="form-select"
-                ref={genderField}
                 defaultValue={userData.jenis_kelamin}
-                disabled
+                onChange={setGender}
               >
                 <option hidden>Pilih Salah Satu</option>
                 <option value="Pria">Laki Laki</option>
@@ -139,19 +174,20 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
                 type="name"
                 placeholder="Jakarta"
                 className="text"
-                ref={birthPlaceField}
+                onChange={setBirthPlace}
                 defaultValue={userData.tempat_lahir}
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label className="form-label">Tanggal Lahir</Form.Label>
+              <Form.Label className="form-label">Tanggal Lahir </Form.Label>
               <Form.Control
                 type="date"
                 placeholder="03/04/1998"
                 className="text"
-                ref={dateOfBirthField}
+                onChange={setDateofBirth}
                 defaultValue={userData.tanggal_lahir}
+                disabled
               />
             </Form.Group>
 
@@ -161,9 +197,8 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
                 type="name"
                 placeholder="37 Tahun"
                 className="text"
-                ref={ageField}
+                onChange={setAge}
                 defaultValue={userData.umur}
-                disabled
               />
             </Form.Group>
 
@@ -172,7 +207,7 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
               <textarea
                 class="form-control"
                 placeholder="Jl. Manggarai Selatan 1"
-                ref={addressField}
+                onChange={setAddress}
                 defaultValue={userData.alamat}
                 style={{ height: '120px' }}
               ></textarea>
@@ -184,9 +219,9 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
               <Form.Label className="form-label">No Handphone</Form.Label>
               <Form.Control
                 type="name"
-                placeholder="31xxxxxxxxxxxxx"
+                placeholder="31xxxxxxxxxx"
                 className="text"
-                ref={noHpField}
+                onChange={setPhoneNumber}
                 defaultValue={userData.no_hp}
               />
             </Form.Group>
@@ -197,9 +232,8 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
                 type="name"
                 placeholder="31xxxxxxxxxx"
                 className="text"
-                ref={noKKField}
+                onChange={setNoKK}
                 defaultValue={userData.no_kk}
-                disabled
               />
             </Form.Group>
 
@@ -209,9 +243,8 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
                 type="name"
                 placeholder="31xxxxxxxxxx"
                 className="text"
-                ref={noNIKField}
+                onChange={setNoNIK}
                 defaultValue={userData.no_nik}
-                disabled
               />
             </Form.Group>
             {image && (
@@ -221,43 +254,61 @@ function ProfileWarga({ listReligion, listJob, listEducation, userData }) {
               ? (
                 <img src={uploadedFileURL} alt="preview" className="img-preview-wrapper" />
               ) : null}
-            <div className="avatar">
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleChangeImage}
-                className="avatar-image"
-              />
-            </div>
-            {/* <Form.Group className="mb-3">
+            <Form.Group className="mb-3">
               <Form.Label>Upload Foto</Form.Label>
-              <input class="form-control" type="file" id="formFile"
-                src={uploadedFileURL}
-                onChange={handleChangeImage}
-                defaultValue={userData.foto_warga}
-              />
-            </Form.Group> */}
+              <div className="avatar">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                  className="avatar-image"
+                />
+              </div>
+            </Form.Group>
 
+            {/* {image2 && (
+              <img src={image2} alt="" />
+            )}
+            {uploadedFileURL2
+              ? (
+                <img src={uploadedFileURL2} alt="preview" className="img-preview-wrapper" />
+              ) : null}
             <Form.Group className="mb-3">
               <Form.Label>Upload KK</Form.Label>
-              <input class="form-control" type="file" id="formFile"
-                src={uploadedFileURL}
-                onChange={handleChangeImage}
-                defaultValue={userData.foto_kk}
-              />
+              <div className="avatar">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChangeImage2}
+                  className="avatar-image"
+                />
+              </div>
             </Form.Group>
 
+            {image3 && (
+              <img src={image3} alt="" />
+            )}
+            {uploadedFileURL3
+              ? (
+                <img src={uploadedFileURL3} alt="preview" className="img-preview-wrapper" />
+              ) : null}
             <Form.Group className="mb-3">
               <Form.Label>Upload KTP</Form.Label>
-              <input class="form-control" type="file" id="formFile"
-                src={uploadedFileURL}
-                onChange={handleChangeImage}
-                defaultValue={userData.foto_ktp}
-              />
-            </Form.Group>
+              <div className="avatar">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChangeImage3}
+                  className="avatar-image"
+                />
+              </div>
+            </Form.Group> */}
 
             <Button variant="primary" type="submit" className="input-btn mb-5" style={{ marginTop: "25px" }}>
               Input Data
+              {loading && (
+                <span className="spinner-border spinner-border-sm me-2" />
+              )}
             </Button>
           </Col>
         </Row>
