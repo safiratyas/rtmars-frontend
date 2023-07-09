@@ -4,6 +4,7 @@ import { updateListProfile } from '../../../redux/actions/updateCitizen';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
 import { Navigate } from 'react-router-dom';
+import timeFormat from '../../../utils/timeFormat';
 
 function ProfileWarga({ userData }) {
   // Data Profile
@@ -42,7 +43,7 @@ function ProfileWarga({ userData }) {
       jenis_kelamin: genderField.current.value,
       no_hp: phoneField.current.value,
       tempat_lahir: birthPlaceField.current.value,
-      tanggal_lahir: "1997-10-22",
+      tanggal_lahir: timeFormat(dateOfBirthField.current.value),
       no_kk: noKKField.current.value,
       no_nik: noNIKField.current.value,
       umur: parseInt(ageField.current.value)

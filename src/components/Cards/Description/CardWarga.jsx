@@ -1,4 +1,5 @@
 // import { Link } from 'react-router-dom';
+import { React } from "react"
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import './CardDesc.scss';
 

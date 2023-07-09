@@ -3,14 +3,14 @@ import axios from 'axios';
 
 const token = localStorage.getItem('token');
 
-export default function createCitizen(bodyUser) {
+export default function updateCitizenCloudinary(cloudinaryUpload) {
   return axios
     // eslint-disable-next-line prefer-template
     .post(
-      "http://localhost:3000/api/citizens/create/data",
-      bodyUser, {
+      'http://localhost:3000/api/citizens/picture/citizen/cloudinary',
+      cloudinaryUpload, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       },

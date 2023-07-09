@@ -1,21 +1,29 @@
-import axios from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { createCitizen } from '../../../redux/actions/inputCitizen';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
-import { useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import timeFormat from '../../../utils/timeFormat';
 
 function InputWarga({ listReligion, listJob, listEducation, userData }) {
+  const dispatch = useDispatch();
+
+  // Upload Image
   const [image, setImage] = useState(null);
   const [uploadedFileURL, setUploadedFileURL] = useState(null);
-
-  const dispatch = useDispatch();
-  let params = useParams()
+  const [loading, setLoading] = useState(false);
 
   const handleChangeImage = (e) => {
     setImage(e.target.files[0]);
     console.log(e)
   };
+
+  const {
+    createCitizenLoading,
+    createCitizenResult,
+    createCitizenError,
+  } = useSelector((state) => { return state.createCitizenReducer; });
 
   // Declare Field
   const nameField = useRef("");
@@ -30,59 +38,35 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
   const jobField = useRef("");
   const citizenshipField = useRef("");
 
-  const [errorResponse, setErrorResponse] = useState({
-    isError: false,
-    message: ""
-  })
-
-  const submitCitizen = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    try {
-      const userToUpdatePayload = {
-        nama_lengkap: nameField.current.value,
-        alamat: addressField.current.value,
-        jenis_kelamin: genderField.current.value,
-        tempat_lahir: birthPlaceField.current.value,
-        tanggal_lahir: birthPlaceField.current.value,
-        id_agama: religionField.current.value.id,
-        id_pendidikan: eduField.current.value,
-        id_pekerjaan: jobField.current.value,
-        kewarganegaraan: citizenshipField.current.value,
-        no_nik: noNIKField.current.value,
-        no_kk: noKKField.current.value,
-        // foto_warga,
-        // foto_kk,
-        // foto_ktp,
-      }
-
-      // console.log(userToUpdatePayload + " Lewat Sini")
-
-      const updateRequest = await axios.post(
-        "http://localhost:3000/api/citizens/create/data", userToUpdatePayload
-      );
-
-      const loginReponse = updateRequest;
-      console.log(loginReponse);
-
-      if (loginReponse.status) {
-        localStorage.setItem("token", loginReponse.data.token);
-
-        window.location.href = '/';
-      }
-
-    } catch (err) {
-      const response = err.response.data;
-
-      setErrorResponse({
-        isError: true,
-        message: response.message,
-      });
-    }
+    const body = {
+      nama_lengkap: nameField.current.value,
+      alamat: addressField.current.value,
+      jenis_kelamin: genderField.current.value,
+      tempat_lahir: birthPlaceField.current.value,
+      tanggal_lahir: timeFormat(dateOfBirthField.current.value),
+      id_agama: parseInt(religionField.current.value),
+      id_pendidikan: parseInt(eduField.current.value),
+      id_pekerjaan: parseInt(jobField.current.value),
+      kewarganegaraan: citizenshipField.current.value,
+      no_nik: noNIKField.current.value,
+      no_kk: noKKField.current.value
+    };
+    await dispatch(createCitizen(image, body));
   }
 
   useEffect(() => {
-
+    console.log(createCitizenResult);
+    if (createCitizenLoading) {
+      setLoading(true);
+    } else if (createCitizenResult) {
+      setLoading(false);
+      window.location.reload();
+      console.log(createCitizenResult);
+    } else if (createCitizenError) {
+      console.log(createCitizenError);
+    }
     let fileReader = false;
     let isCancel = false;
     console.log(image);
@@ -104,9 +88,13 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
     };
   });
 
+  if (createCitizenResult) {
+    return <Navigate to="/pendataan/warga" />;
+  }
+
   return (
     <Container className="mt-5">
-      <Form onSubmit={submitCitizen}>
+      <Form onSubmit={handleSubmit}>
         <Row>
           <Col xs={6}>
             <Form.Group className="mb-3">
@@ -242,32 +230,38 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
               </select>
             </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Upload Foto</Form.Label>
-              <input class="form-control" type="file" id="formFile"
-                src={uploadedFileURL}
-                onChange={handleChangeImage}
-              />
-            </Form.Group>
-
+            {image && (
+              <img src={image} alt="" />
+            )}
+            {uploadedFileURL
+              ? (
+                <img src={uploadedFileURL} alt="preview" className="img-preview-wrapper" style={{ width: '50%' }} />
+              ) : null}
             <Form.Group className="mb-3">
               <Form.Label>Upload KK</Form.Label>
-              <input class="form-control" type="file" id="formFile"
-                src={uploadedFileURL}
-                onChange={handleChangeImage}
-              />
+              <div className="avatar">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                  className="avatar-image"
+                />
+              </div>
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            {/* <Form.Group className="mb-3">
               <Form.Label>Upload KTP</Form.Label>
               <input class="form-control" type="file" id="formFile"
                 src={uploadedFileURL}
                 onChange={handleChangeImage}
               />
-            </Form.Group>
+            </Form.Group> */}
 
             <Button variant="primary" type="submit" className="input-btn mb-5" style={{ marginTop: "25px" }}>
               Input Data
+              {loading && (
+                <span className="spinner-border spinner-border-sm me-2" />
+              )}
             </Button>
           </Col>
         </Row>
