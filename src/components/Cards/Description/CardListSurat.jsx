@@ -17,7 +17,7 @@ function CardListDocument({ documentData, userData }) {
             return (
               <Col>
                 <Card className="list-description" style={{ height: "250px" }}>
-                  <img src={userData.foto_warga} className="mx-auto" alt="list" />
+                  {/* <img src={userData.foto_warga} className="mx-auto" alt="list" /> */}
                   <Card.Body>
                     {/* <Card.Title style={{ fontWeight: "bold" }}>{userData.nama_lengkap}</Card.Title> */}
                     <Card.Text style={{ color: 'grey' }}>{document.jenis_dokumen}</Card.Text>

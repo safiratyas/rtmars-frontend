@@ -91,13 +91,13 @@ function ProfileWarga({ userData }) {
     <Container className="mt-5">
       <Form onSubmit={handleSubmit}>
         <Row>
-          <Col xs={6}>
+          <div className="img-handle">
             {image && (
               <img src={image} alt="" />
             )}
             {uploadedFileURL
               ? (
-                <img src={uploadedFileURL} alt="preview" className="img-preview-wrapper" style={{ width: '50%' }} />
+                <img src={uploadedFileURL} alt="preview" className="img-preview-wrapper" style={{ width: '50%', justifyContent: 'center' }} />
               ) : null}
             <Form.Group className="mb-3">
               <Form.Label></Form.Label>
@@ -110,6 +110,8 @@ function ProfileWarga({ userData }) {
                 />
               </div>
             </Form.Group>
+          </div>
+          <Col xs={6}>
 
             <Form.Group className="mb-3">
               <Form.Label className="form-label">Nama Lengkap</Form.Label>
@@ -173,6 +175,9 @@ function ProfileWarga({ userData }) {
               />
             </Form.Group>
 
+          </Col>
+
+          <Col xs={6}>
             <Form.Group className="mb-3">
               <Form.Label className="form-label">Alamat</Form.Label>
               <textarea
@@ -184,9 +189,7 @@ function ProfileWarga({ userData }) {
                 style={{ height: '120px' }}
               ></textarea>
             </Form.Group>
-          </Col>
 
-          <Col xs={6}>
             <Form.Group className="mb-3">
               <Form.Label className="form-label">No Handphone</Form.Label>
               <Form.Control
@@ -222,15 +225,14 @@ function ProfileWarga({ userData }) {
                 defaultValue={userData.no_nik}
               />
             </Form.Group>
-
-            <Button variant="primary" type="submit" className="input-btn mb-5" style={{ marginTop: "25px" }}>
-              Input Data
-              {loading && (
-                <span className="spinner-border spinner-border-sm me-2" />
-              )}
-            </Button>
           </Col>
         </Row>
+        <Button variant="primary" type="submit" className="input-btn mb-5" style={{ marginTop: "25px" }}>
+          Input Data
+          {loading && (
+            <span className="spinner-border spinner-border-sm me-2" />
+          )}
+        </Button>
       </Form>
     </Container >
   )
