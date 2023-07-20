@@ -4,7 +4,8 @@ function timeFormat(date) {
   let mm = String(time.getMonth() + 1).padStart(2, '0'); //January is 0!
   let yyyy = time.getFullYear();
 
-  const timeRender = `${dd}/${mm}/${yyyy}`
+  // const timeRender = `${dd}-${mm}-${yyyy}`
+  const timeRender = `${yyyy}-${mm}-${dd}`
 
   return timeRender;
 }

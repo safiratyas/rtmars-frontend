@@ -4,7 +4,7 @@ import { createCitizen } from '../../../redux/actions/inputCitizen';
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import "./FormData.scss"
 import { Navigate } from "react-router-dom";
-import timeFormat from '../../../utils/timeFormat';
+// import timeFormat from '../../../utils/timeFormat';
 
 function InputWarga({ listReligion, listJob, listEducation, userData }) {
   const dispatch = useDispatch();
@@ -33,9 +33,9 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
   const addressField = useRef("");
   const noKKField = useRef("");
   const noNIKField = useRef("");
-  const religionField = useRef("");
-  const eduField = useRef("");
-  const jobField = useRef("");
+  const religionField = useRef(0);
+  const eduField = useRef(0);
+  const jobField = useRef(0);
   const citizenshipField = useRef("");
 
   async function handleSubmit(e) {
@@ -45,10 +45,11 @@ function InputWarga({ listReligion, listJob, listEducation, userData }) {
       alamat: addressField.current.value,
       jenis_kelamin: genderField.current.value,
       tempat_lahir: birthPlaceField.current.value,
-      tanggal_lahir: timeFormat(dateOfBirthField.current.value),
-      id_agama: parseInt(religionField.current.value),
-      id_pendidikan: parseInt(eduField.current.value),
-      id_pekerjaan: parseInt(jobField.current.value),
+      tanggal_lahir: dateOfBirthField.current.value,
+      // tanggal_lahir: "2006-04-12",
+      id_agama: religionField.current.value,
+      id_pendidikan: eduField.current.value,
+      id_pekerjaan: jobField.current.value,
       kewarganegaraan: citizenshipField.current.value,
       no_nik: noNIKField.current.value,
       no_kk: noKKField.current.value
