@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getAdminLogin } from "../redux/actions/getAdminLogin"
 import { getAllCitizen } from "../redux/actions/getListCitizen";
+import { getNotificationCitizen } from "../redux/actions/notificationCitizen";
 import NavbarHomepage from "../components/Navbar/NavbarHome";
 // import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import NavbarProfile from "../components/Navbar/NavbarProfile";
@@ -20,6 +21,7 @@ function Homepage() {
   const [userData, setUserData] = useState([]);
   const [adminData, setAdminData] = useState([]);
   const [citizenData, setCitizenData] = useState([]);
+  const [notification, setNotification] = useState([]);
   const [isLoggedIn, setIsLoggedin] = useState(true);
   const token = localStorage.getItem('token');
 
@@ -35,6 +37,10 @@ function Homepage() {
     listCitizenResult,
   } = useSelector((state) => state.getListCitizenReducer);
 
+  const {
+    listCitizenNotificationResult,
+  } = useSelector((state) => state.getListCitizenNotification);
+
   useEffect(() => {
     dispatch(getAllCitizen());
   }, []);
@@ -48,6 +54,10 @@ function Homepage() {
   }, []);
 
   useEffect(() => {
+    dispatch(getNotificationCitizen());
+  }, []);
+
+  useEffect(() => {
     if (citizenDataResult) {
       setUserData(citizenDataResult);
     }
@@ -57,7 +67,10 @@ function Homepage() {
     if (listCitizenResult) {
       setCitizenData(listCitizenResult);
     }
-  }, [citizenDataResult, adminDataResult, listCitizenResult]);
+    if (listCitizenNotificationResult) {
+      setNotification(listCitizenNotificationResult);
+    }
+  }, [citizenDataResult, adminDataResult, listCitizenResult, listCitizenNotificationResult]);
 
   const handleLogin = () => {
     if (!token) {
@@ -69,13 +82,13 @@ function Homepage() {
     handleLogin();
   }, []);
 
-  console.log(userData)
-  console.log(adminData)
+  console.log(notification)
 
   return isLoggedIn ? (
     <>
       <NavbarProfile
         userData={userData}
+        notification={notification}
       />
       <Header />
       <CardSum citizenData={citizenData} />

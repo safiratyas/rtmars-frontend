@@ -8,12 +8,12 @@ export const getNotificationCitizen = () => {
   return async (dispatch) => {
     try {
       const getListData = await notification();
-      console.log(getListData.data.data.data)
+      console.log(getListData.data)
       await dispatch({
         type: GET_CITIZEN_NOTIFICATION,
         payload: {
           loading: false,
-          result: await getListData.data.data.data,
+          result: await getListData.data.data,
           error: false,
         },
       });

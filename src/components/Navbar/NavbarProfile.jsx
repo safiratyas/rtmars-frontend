@@ -5,7 +5,7 @@ import CardToast from "../Cards/Notification/CardToast";
 import CardLogout from "../Cards/Notification/Logout";
 import './Navbar.scss';
 
-function NavbarProfile({ userData }) {
+function NavbarProfile({ userData, notification }) {
   const link = `/pendataan/surat/${userData.id}`
   const linkProfile = `/input/profile/${userData.id}`
 
@@ -39,7 +39,7 @@ function NavbarProfile({ userData }) {
           </Nav> */}
           <Nav className="d-flex">
             <CardLogout />
-            <CardToast />
+            <CardToast notification={notification} />
           </Nav>
         </Container>
       </Navbar >
