@@ -40,6 +40,9 @@ import {
 import {
   createEventReducer
 } from './createEvent'
+import {
+  getListAgendaReducer
+} from './getAllAgenda'
 
 export default combineReducers({
   getCitizenLoginReducer,
@@ -54,5 +57,6 @@ export default combineReducers({
   getDocumentReducer,
   getProfileReducer,
   createCitizenReducer,
-  createEventReducer
+  createEventReducer,
+  getListAgendaReducer
 });
