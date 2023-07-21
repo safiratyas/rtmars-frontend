@@ -1,31 +1,14 @@
 import React from "react";
-import { Link, useParams } from 'react-router-dom';
-import { userLogout } from '../../redux/actions/logout';
-import { useDispatch } from 'react-redux';
-import { Navbar, Container, Offcanvas, Nav, NavDropdown, Button } from "react-bootstrap"
+import { Link } from 'react-router-dom';
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap"
+import CardToast from "../Cards/Notification/CardToast";
+import CardLogout from "../Cards/Notification/Logout";
 import './Navbar.scss';
 
 function NavbarProfile({ userData }) {
-  // let user;
-  // if (userData == null || userData === {}) {
-  //   user = adminData.nama_lengkap
-  //   console.log("betul" + user)
-  // }
-
-  // if (adminData == null || adminData === {}) {
-  //   user = userData.nama_lengkap
-  //   console.log("betul 2" + user)
-  // }
-
-  const dispatch = useDispatch();
-  const params = useParams();
   const link = `/pendataan/surat/${userData.id}`
   const linkProfile = `/input/profile/${userData.id}`
 
-  const logout = () => {
-    dispatch(userLogout());
-    window.location.href = '/login';
-  }
   return (
     <>
       <Navbar className="navbar-home sticky-top">
@@ -36,7 +19,7 @@ function NavbarProfile({ userData }) {
               />
             </Navbar.Brand>
           </Link>
-          <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "30%" }}>
+          <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
                 Input Surat Permohonan
@@ -55,9 +38,8 @@ function NavbarProfile({ userData }) {
             <p>Selamat Datang, {userData.nama_lengkap}</p>
           </Nav> */}
           <Nav className="d-flex">
-            <Link to="/login">
-              <Button variant="primary" className="nav-signup" onClick={logout}>Log Out</Button>
-            </Link>
+            <CardLogout />
+            <CardToast />
           </Nav>
         </Container>
       </Navbar >

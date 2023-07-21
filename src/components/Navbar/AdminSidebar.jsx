@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
-import { userLogout } from '../../redux/actions/logout';
-import { useDispatch } from 'react-redux';
-import { Container, Nav, Navbar, Button, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './Navbar.scss';
 import CardToast from "../Cards/Notification/CardToast";
+import CardLogout from "../Cards/Notification/Logout";
 
 function AdminSidebar({ userData }) {
-
   return (
     <>
       <Navbar className="navbar-home sticky-top">
@@ -18,7 +16,7 @@ function AdminSidebar({ userData }) {
               />
             </Navbar.Brand>
           </Link>
-          <Nav className="me-auto">
+          <Nav cclassName="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/pendataan/warga" style={{ textDecoration: 'none' }}>
                 Daftar Data Warga
@@ -37,9 +35,7 @@ function AdminSidebar({ userData }) {
             </NavDropdown>
           </Nav>
           <Nav className="ms-auto">
-            <Link to="/login">
-              <Button variant="primary" className="nav-signup">Log Out</Button>
-            </Link>
+            <CardLogout />
             <CardToast />
           </Nav>
         </Container>
