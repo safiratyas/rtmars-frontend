@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
-
+import { getAllAgenda } from "../redux/actions/getAllAgenda";
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import Activity from "../components/Carousel/Activity";
 import CardAgenda from "../components/Cards/Description/CardAgenda";
 
 function Agenda() {
   const dispatch = useDispatch();
-  const [userData, setUserData] = useState([]);
+  const [agenda, setAgenda] = useState([]);
 
   const {
-    citizenDataResult,
-  } = useSelector((state) => state.getCitizenLoginReducer);
+    listAgendaResult,
+  } = useSelector((state) => state.getListAgendaReducer);
 
   useEffect(() => {
-    dispatch(getCitizenLogin());
+    dispatch(getAllAgenda());
   }, []);
 
   useEffect(() => {
-    if (citizenDataResult) {
-      setUserData(citizenDataResult);
+    if (listAgendaResult) {
+      setAgenda(listAgendaResult);
     }
-  }, [citizenDataResult]);
+  }, [listAgendaResult]);
 
   return (
     <>
-      <NavbarPendataan userData={userData} />
+      {/* <NavbarPendataan userData={userData} /> */}
       <Activity />
-      <CardAgenda />
+      <CardAgenda agenda={agenda} />
     </>
   )
 }

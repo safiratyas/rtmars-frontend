@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 // import { Link } from 'react-router-dom';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
@@ -14,7 +15,7 @@ import 'swiper/css/pagination';
 // import "./Activity.scss"
 import './CardDesc.scss';
 
-function CardAgenda() {
+function CardAgenda({ agenda }) {
   return (
     <Container className="mb-5">
       <div className="card-desc mb-5">
@@ -58,6 +59,27 @@ function CardAgenda() {
               <SwiperSlide><img src={process.env.PUBLIC_URL + '/images/kegiatan-bian-2.jpeg'} className="mb-2 swiper-photo" alt="header"
               /></SwiperSlide>
             </Swiper>
+          </Col>
+          <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
+            {agenda && agenda.map((list) => {
+              return (
+                <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                  <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
+                  <SwiperSlide><img src={process.env.PUBLIC_URL + '/images/kegiatan-kpldh-2.jpeg'} className="mb-2 swiper-photo" alt="header"
+                  /></SwiperSlide>
+                  <SwiperSlide><img src={process.env.PUBLIC_URL + '/images/kegiatan-kpldh-3.jpeg'} className="mb-2 swiper-photo" alt="header"
+                  /></SwiperSlide>
+                </Swiper>
+              )
+            })}
+          </Col>
+          <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
+            <div className="agenda-desc mb-5">
+              <h5>Kegiatan KPLDH Bersama Puskesmas Kecamatan Tebet</h5>
+              <p>Ketuk Pintu Layani Dengan Hati (KPLDH) adalah upaya pemerintah Provinsi DKI Jakarta yang bertujuan untuk meningkatkan pelayanan kesehatan bagi masyarakat. KPLDH memiliki fungsi menunjang dan membantu dalam melaksanakan kegiatan-kegiatan puskesmas dalam wilayah kerjanya yang belum terjangkau oleh pelayanan kesehatan. </p>
+              <a href='https://www.jakarta.go.id/ketuk-pintu-layani-dengan-hati' target="_blank">
+                Baca Selengkapnya Disini {''}</a>
+            </div>
           </Col>
         </Row>
       </div>
