@@ -37,6 +37,9 @@ import {
 import {
   createCitizenReducer
 } from './inputCitizen'
+import {
+  createEventReducer
+} from './createEvent'
 
 export default combineReducers({
   getCitizenLoginReducer,
@@ -50,5 +53,6 @@ export default combineReducers({
   getListDocumentReducer,
   getDocumentReducer,
   getProfileReducer,
-  createCitizenReducer
+  createCitizenReducer,
+  createEventReducer
 });

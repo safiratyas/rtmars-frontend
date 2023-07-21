@@ -31,7 +31,7 @@ function AdminSidebar({ userData }) {
               <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
                 Input Data Warga
               </NavDropdown.Item>
-              <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
+              <NavDropdown.Item href="/input/kegiatan" style={{ textDecoration: 'none' }}>
                 Input Kegiatan
               </NavDropdown.Item>
             </NavDropdown>
