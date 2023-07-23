@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './Navbar.scss';
-import CardToast from "../Cards/Notification/CardToast";
+import CardNotification from "../Cards/Notification/CardNotification";
 import CardLogout from "../Cards/Notification/Logout";
 
-function AdminSidebar({ userData }) {
+function AdminSidebar({ userData, notification }) {
   return (
     <>
       <Navbar className="navbar-home sticky-top">
@@ -36,7 +36,7 @@ function AdminSidebar({ userData }) {
           </Nav>
           <Nav className="ms-auto">
             <CardLogout />
-            <CardToast />
+            <CardNotification notification={notification} />
           </Nav>
         </Container>
       </Navbar>
