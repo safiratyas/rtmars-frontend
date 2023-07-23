@@ -6,11 +6,16 @@ import { getListAdmin } from "../redux/actions/getListAdmin";
 
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import CardPengurus from "../components/Cards/Description/CardPengurus";
+import CardError from "../components/Cards/Description/CardError";
 
 function DataPengurus() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [listAdmin, setListAdmin] = useState([]);
+
+  // Check Login
+  const [isLoggedIn, setIsLoggedin] = useState(true);
+  const token = localStorage.getItem('token');
 
   const {
     citizenDataResult,
@@ -43,7 +48,17 @@ function DataPengurus() {
 
   console.log(listAdmin)
 
-  return (
+  const handleLogin = () => {
+    if (!token) {
+      setIsLoggedin(false);
+    }
+  };
+
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
+  return isLoggedIn ? (
     <>
       <NavbarPendataan userData={userData} />
       <CardPengurus
@@ -51,6 +66,8 @@ function DataPengurus() {
         listAdmin={listAdmin}
       />
     </>
+  ) : (
+    <CardError />
   )
 }
 

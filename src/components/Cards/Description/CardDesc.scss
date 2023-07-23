@@ -9,6 +9,7 @@ $pastel-blue: #8FE3CF;
     color: $dark-green;
     margin-top: 5%;
   }
+
   h3 {
     text-align: center;
     font-weight: bold;
@@ -21,6 +22,7 @@ $pastel-blue: #8FE3CF;
     font-weight: bold;
     color: $dark-green;
   }
+
   h5 {
     text-align: left;
     font-weight: bold;
@@ -57,7 +59,7 @@ $pastel-blue: #8FE3CF;
       transform: scale(1.02);
     }
   }
-  
+
 }
 
 .interest-description {
@@ -118,6 +120,7 @@ $pastel-blue: #8FE3CF;
     height: 250px;
     object-fit: cover;
   }
+
   .swiper-photo {
     float: left;
     height: 500px;
@@ -170,11 +173,13 @@ $pastel-blue: #8FE3CF;
     font-weight: bold;
     margin-bottom: 5%;
   }
+
   p {
     text-align: justify;
     font-weight: normal;
     margin-bottom: 2%;
   }
+
   a {
     text-align: left;
     font-weight: bold;

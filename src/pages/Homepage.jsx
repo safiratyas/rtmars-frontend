@@ -6,6 +6,7 @@ import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getAdminLogin } from "../redux/actions/getAdminLogin"
 import { getAllCitizen } from "../redux/actions/getListCitizen";
 import { getNotificationCitizen } from "../redux/actions/notificationCitizen";
+import { getTotalCitizen } from "../redux/actions/getTotalCitizen";
 import NavbarHomepage from "../components/Navbar/NavbarHome";
 // import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import NavbarProfile from "../components/Navbar/NavbarProfile";
@@ -22,6 +23,9 @@ function Homepage() {
   const [adminData, setAdminData] = useState([]);
   const [citizenData, setCitizenData] = useState([]);
   const [notification, setNotification] = useState([]);
+  const [total, setTotal] = useState([]);
+
+  // Check Login
   const [isLoggedIn, setIsLoggedin] = useState(true);
   const token = localStorage.getItem('token');
 
@@ -41,6 +45,10 @@ function Homepage() {
     listCitizenNotificationResult,
   } = useSelector((state) => state.getListCitizenNotification);
 
+  const {
+    totalCitizenResult,
+  } = useSelector((state) => state.getTotalCitizenReducer);
+
   useEffect(() => {
     dispatch(getAllCitizen());
   }, []);
@@ -58,6 +66,10 @@ function Homepage() {
   }, []);
 
   useEffect(() => {
+    dispatch(getTotalCitizen());
+  }, []);
+
+  useEffect(() => {
     if (citizenDataResult) {
       setUserData(citizenDataResult);
     }
@@ -70,7 +82,10 @@ function Homepage() {
     if (listCitizenNotificationResult) {
       setNotification(listCitizenNotificationResult);
     }
-  }, [citizenDataResult, adminDataResult, listCitizenResult, listCitizenNotificationResult]);
+    if (totalCitizenResult) {
+      setTotal(totalCitizenResult);
+    }
+  }, [citizenDataResult, adminDataResult, listCitizenResult, listCitizenNotificationResult, totalCitizenResult]);
 
   const handleLogin = () => {
     if (!token) {
@@ -91,7 +106,7 @@ function Homepage() {
         notification={notification}
       />
       <Header />
-      <CardSum citizenData={citizenData} />
+      <CardSum total={total} />
       <CardDescription />
       <Faq />
       <CardInterest />
@@ -101,7 +116,7 @@ function Homepage() {
     <>
       <NavbarHomepage />
       <Header />
-      <CardSum citizenData={citizenData} />
+      <CardSum total={total} />
       <Faq />
       <CardDescription />
       <CardInterest />

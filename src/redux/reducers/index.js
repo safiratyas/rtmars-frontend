@@ -49,6 +49,9 @@ import {
 import {
   getListAdminNotification
 } from './notificationAdmin'
+import {
+  getTotalCitizenReducer
+} from './getTotalCitizen'
 
 export default combineReducers({
   getCitizenLoginReducer,
@@ -66,5 +69,6 @@ export default combineReducers({
   createEventReducer,
   getListAgendaReducer,
   getListCitizenNotification,
-  getListAdminNotification
+  getListAdminNotification,
+  getTotalCitizenReducer
 });

@@ -3,16 +3,20 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import './CardDesc.scss';
 
-function CardSum({ citizenData }) {
-  console.log(citizenData)
+function CardSum({ total }) {
+  console.log(total)
 
   // Filtering Gender (Pria)
-  const checkMen = citizenData.filter(data => data.jenis_kelamin === "Pria");
+  const checkMen = total.filter(data => data.jenis_kelamin === "Pria");
   const totalMen = checkMen.length
 
   // Filtering Gender (Wanita)
-  const checkWomen = citizenData.filter(data => data.jenis_kelamin === "Wanita");
+  const checkWomen = total.filter(data => data.jenis_kelamin === "Wanita");
   const totalWomen = checkWomen.length
+
+  // Filtering age > 40 (Orang Tua)
+  const checkAge = total.filter(data => data.umur > 40);
+  const totalAge = checkAge.length
 
   return (
     <div className="div-sum">
@@ -20,8 +24,8 @@ function CardSum({ citizenData }) {
         <Row xs={1} md={4} className="g-4 text-center">
           <Col>
             <img src={process.env.PUBLIC_URL + '/images/developer.gif'} className="mx-auto" alt="list" style={{ width: "50%" }} />
-            <h5 style={{ fontWeight: "bold" }}>Kepala Keluarga </h5>
-            <p>100000</p>
+            <h5 style={{ fontWeight: "bold" }}>Orang Tua </h5>
+            <p>{totalAge}</p>
           </Col>
           <Col>
             <img src={process.env.PUBLIC_URL + '/images/male.gif'} className="mx-auto" alt="list" style={{ width: "50%" }} />
@@ -36,7 +40,7 @@ function CardSum({ citizenData }) {
           <Col>
             <img src={process.env.PUBLIC_URL + '/images/globe.gif'} className="mx-auto" alt="list" style={{ width: "50%" }} />
             <h5 style={{ fontWeight: "bold" }}>Total </h5>
-            <p>{citizenData.length}</p>
+            <p>{total.length}</p>
           </Col>
         </Row>
       </Container>
