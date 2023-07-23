@@ -8,7 +8,6 @@ import { getAllCitizen } from "../redux/actions/getListCitizen";
 import { getNotificationCitizen } from "../redux/actions/notificationCitizen";
 import { getTotalCitizen } from "../redux/actions/getTotalCitizen";
 import NavbarHomepage from "../components/Navbar/NavbarHome";
-// import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import NavbarProfile from "../components/Navbar/NavbarProfile";
 import Header from "../components/Header/Header";
 import CardDescription from "../components/Cards/Description/CardDescription";

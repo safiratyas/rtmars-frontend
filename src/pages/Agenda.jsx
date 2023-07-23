@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getAllAgenda } from "../redux/actions/getAllAgenda";
-import NavbarPendataan from "../components/Navbar/NavbarPendataan";
+import NavbarAgenda from "../components/Navbar/NavbarAgenda";
 import Activity from "../components/Carousel/Activity";
 import CardAgenda from "../components/Cards/Description/CardAgenda";
 
@@ -26,7 +26,7 @@ function Agenda() {
 
   return (
     <>
-      {/* <NavbarPendataan userData={userData} /> */}
+      <NavbarAgenda />
       <Activity />
       <CardAgenda agenda={agenda} />
     </>

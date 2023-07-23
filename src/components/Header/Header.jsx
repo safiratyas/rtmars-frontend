@@ -12,7 +12,7 @@ function Header() {
         <Col xs={6} className="list-desc">
           <h3>Apa itu RTMARS?</h3>
           <p>RTMARS adalah website yang dibuat untuk memudahkan Rukun Tetangga (RT) dalam mengarsipkan dokumen - dokumen warga. Website ini akan menjadi acuan bagi RT saat mem-validasi data dan memudahkan saat menginput permohonan surat.</p>
-          <Link to={"/login"}>
+          <Link to={"/agenda"}>
             <Button variant="primary" className="list-btn">Mulai</Button>
           </Link>
         </Col>
