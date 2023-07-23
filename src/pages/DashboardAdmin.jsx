@@ -4,18 +4,24 @@ import { getAllCitizen } from "../redux/actions/getListCitizen";
 import { getNotificationCitizen } from "../redux/actions/notificationAdmin";
 import { getTotalCitizen } from "../redux/actions/getTotalCitizen";
 import AdminSidebar from "../components/Navbar/AdminSidebar";
+import AdminHome from "../components/Navbar/AdminHome";
 import Header from "../components/Header/Header";
 import CardDescription from "../components/Cards/Description/CardDescription";
 import CardInterest from "../components/Cards/Description/CardInterest";
 import Faq from "../components/Accordion/Faq";
 import Footer from "../components/Footer/Footer";
 import CardSum from "../components/Cards/Description/CardSum";
+import CardAdminError from "../components/Cards/Description/CardAdminError";
 
 function DashboardAdmin() {
   const dispatch = useDispatch();
   const [citizenData, setCitizenData] = useState([]);
   const [notification, setNotification] = useState([]);
   const [total, setTotal] = useState([]);
+
+  // Check Login
+  const [isLoggedIn, setIsLoggedin] = useState(true);
+  const token = localStorage.getItem('token');
 
   const {
     listCitizenResult,
@@ -53,11 +59,29 @@ function DashboardAdmin() {
     }
   }, [listCitizenResult, listAdminNotificationResult, totalCitizenResult]);
 
-  console.log(total)
+  const handleLogin = () => {
+    if (!token) {
+      setIsLoggedin(false);
+    }
+  };
 
-  return (
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
+  return isLoggedIn ? (
     <>
       <AdminSidebar notification={notification} />
+      <Header />
+      <CardSum total={total} />
+      <CardDescription />
+      <Faq />
+      <CardInterest />
+      <Footer />
+    </>
+  ) : (
+    <>
+      <AdminHome notification={notification} />
       <Header />
       <CardSum total={total} />
       <CardDescription />

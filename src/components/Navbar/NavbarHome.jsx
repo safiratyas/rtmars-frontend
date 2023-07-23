@@ -3,6 +3,9 @@ import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './Navbar.scss';
 
 function NavbarHomepage() {
+  const link = "/pendataan/surat/:id"
+  const linkProfile = "/input/profile/:id"
+
   return (
     <>
       <Navbar className="navbar-home sticky-top">
@@ -15,14 +18,14 @@ function NavbarHomepage() {
           </Link>
           <Nav className="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/pendataan/warga" style={{ textDecoration: 'none' }}>
-                Daftar Data Warga
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
-                Input Data Warga
-              </NavDropdown.Item>
               <NavDropdown.Item href="/input/surat" style={{ textDecoration: 'none' }}>
                 Input Surat Permohonan
+              </NavDropdown.Item>
+              <NavDropdown.Item href={link} style={{ textDecoration: 'none' }}>
+                Daftar Surat Permohonan
+              </NavDropdown.Item>
+              <NavDropdown.Item href={linkProfile} style={{ textDecoration: 'none' }}>
+                Edit Data Diri
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/agenda">Agenda</Nav.Link>

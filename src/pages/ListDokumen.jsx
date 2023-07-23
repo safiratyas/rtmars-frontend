@@ -5,11 +5,16 @@ import { getAdminLogin } from "../redux/actions/getAdminLogin";
 import { getAllDocument } from "../redux/actions/getListDocument";
 import NavbarAdmin from "../components/Navbar/NavbarAdmin";
 import CardListSurat from "../components/Cards/Description/CardListSurat"
+import CardAdminError from "../components/Cards/Description/CardAdminError";
 
 function ListDokumen() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [documentData, setDocumentData] = useState([]);
+
+  // Check Login
+  const [isLoggedIn, setIsLoggedin] = useState(true);
+  const token = localStorage.getItem('token');
 
   const {
     adminDataResult,
@@ -37,7 +42,17 @@ function ListDokumen() {
 
   }, [adminDataResult, listDocResult]);
 
-  return (
+  const handleLogin = () => {
+    if (!token) {
+      setIsLoggedin(false);
+    }
+  };
+
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
+  return isLoggedIn ? (
     <>
       <NavbarAdmin userData={userData} />
       <CardListSurat
@@ -45,6 +60,8 @@ function ListDokumen() {
         documentData={documentData}
       />
     </>
+  ) : (
+    <CardAdminError />
   )
 }
 

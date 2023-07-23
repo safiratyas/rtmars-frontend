@@ -7,6 +7,7 @@ import { getListEducation } from "../redux/actions/getListEducation";
 import { useDispatch, useSelector } from "react-redux";
 import NavbarAdmin from "../components/Navbar/NavbarAdmin";
 import FormRequest from "../components/Form/Request/FormData";
+import CardAdminError from "../components/Cards/Description/CardAdminError";
 
 function FormData() {
   const dispatch = useDispatch();
@@ -14,6 +15,10 @@ function FormData() {
   const [listReligion, setlistReligion] = useState([]);
   const [listJob, setListJob] = useState([]);
   const [listEducation, setListEducation] = useState([]);
+
+  // Check Login
+  const [isLoggedIn, setIsLoggedin] = useState(true);
+  const token = localStorage.getItem('token');
 
   const {
     citizenDataResult,
@@ -62,8 +67,17 @@ function FormData() {
     }
   }, [citizenDataResult, listReligionResult, listJobResult, listEducationResult]);
 
-  console.log(listEducation)
-  return (
+  const handleLogin = () => {
+    if (!token) {
+      setIsLoggedin(false);
+    }
+  };
+
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
+  return isLoggedIn ? (
     <>
       <NavbarAdmin userData={userData} />
       <FormRequest
@@ -73,6 +87,8 @@ function FormData() {
         userData={userData}
       />
     </>
+  ) : (
+    <CardAdminError />
   )
 }
 

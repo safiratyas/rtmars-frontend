@@ -5,11 +5,16 @@ import { getAllCitizen } from "../redux/actions/getListCitizen"
 
 import NavbarAdmin from "../components/Navbar/NavbarAdmin";
 import CardWarga from "../components/Cards/Description/CardWarga";
+import CardAdminError from "../components/Cards/Description/CardAdminError";
 
 function DataWarga() {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState([]);
   const [listCitizen, setListCitizen] = useState([]);
+
+  // Check Login
+  const [isLoggedIn, setIsLoggedin] = useState(true);
+  const token = localStorage.getItem('token');
 
   const {
     adminDataResult,
@@ -36,13 +41,23 @@ function DataWarga() {
     }
   }, [adminDataResult, listCitizenResult]);
 
-  console.log(listCitizen)
+  const handleLogin = () => {
+    if (!token) {
+      setIsLoggedin(false);
+    }
+  };
 
-  return (
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
+  return isLoggedIn ? (
     <>
       <NavbarAdmin userData={userData} />
       <CardWarga listCitizen={listCitizen} />
     </>
+  ) : (
+    <CardAdminError />
   )
 }
 

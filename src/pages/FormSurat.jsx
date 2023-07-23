@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import NavbarPendataan from "../components/Navbar/NavbarPendataan";
 import FormSurat from "../components/Form/Request/FormSurat";
+import CardError from "../components/Cards/Description/CardError";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getDocumentID } from "../redux/actions/getDocument";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +12,10 @@ function SuratWarga() {
   const params = useParams();
   const [userData, setUserData] = useState([]);
   const [documentData, setDocumentData] = useState([]);
+
+  // Check Login
+  const [isLoggedIn, setIsLoggedin] = useState(true);
+  const token = localStorage.getItem('token');
 
   const {
     citizenDataResult,
@@ -37,11 +42,23 @@ function SuratWarga() {
     }
   }, [citizenDataResult, documentIDResult]);
 
-  return (
+  const handleLogin = () => {
+    if (!token) {
+      setIsLoggedin(false);
+    }
+  };
+
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
+  return isLoggedIn ? (
     <>
       <NavbarPendataan userData={userData} />
       <FormSurat userData={userData} />
     </>
+  ) : (
+    <CardError />
   )
 }
 
