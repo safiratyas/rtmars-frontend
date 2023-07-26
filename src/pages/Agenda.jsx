@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
 import { getAllAgenda } from "../redux/actions/getAllAgenda";
 import NavbarAgenda from "../components/Navbar/NavbarAgenda";
 import Activity from "../components/Carousel/Activity";

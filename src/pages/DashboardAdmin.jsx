@@ -11,7 +11,6 @@ import CardInterest from "../components/Cards/Description/CardInterest";
 import Faq from "../components/Accordion/Faq";
 import Footer from "../components/Footer/Footer";
 import CardSum from "../components/Cards/Description/CardSum";
-import CardAdminError from "../components/Cards/Description/CardAdminError";
 
 function DashboardAdmin() {
   const dispatch = useDispatch();

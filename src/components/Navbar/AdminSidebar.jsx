@@ -33,6 +33,7 @@ function AdminSidebar({ userData, notification }) {
                 Input Kegiatan
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/agenda">Agenda</Nav.Link>
           </Nav>
           <Nav className="ms-auto">
             <CardLogout />

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCitizenLogin } from "../redux/actions/getCitizenLogin";
-// import { getDocumentID } from "../redux/actions/getDocument";
 import { getAllDocument } from "../redux/actions/getListDocument";
 import { useParams } from "react-router-dom";
 

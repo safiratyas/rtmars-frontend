@@ -73,7 +73,7 @@ function FormKegiatan({ userData }) {
   });
 
   if (createEventResult) {
-    return <Navigate to="/pendataan/warga" />;
+    return <Navigate to="/agenda" />;
   }
 
 
