@@ -14,11 +14,11 @@ function CardNotification({ notification }) {
   const notify = () => toast((t) => (
     <span className="text-center">
       {jenisKegiatan}
-      <button className="nav-toast"
+      <Button className="nav-toast"
         onClick={() => toast.dismiss(t.id)}
         style={{ backgroundColor: '#002B5B', color: 'white', borderColor: '#002B5B', borderRadius: '10px' }}>
         Close
-      </button>
+      </Button>
     </span>
   ));
 

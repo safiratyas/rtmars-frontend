@@ -23,18 +23,19 @@ function CardToast({ notification }) {
   const notify = () => toast((t) => (
     <span className="text-center">
       {jenisKegiatan}
-      <button className="nav-toast"
+      <Button className="nav-toast"
         onClick={() => toast.dismiss(t.id)}
         style={{ backgroundColor: '#002B5B', color: 'white', borderColor: '#002B5B', borderRadius: '10px' }}>
         Close
-      </button>
+      </Button>
     </span>
   ));
 
   return (
     <>
       <div>
-        <Button className="nav-signup" style={{ marginLeft: '10px' }} onClick={notify}>Notification</Button>
+        <Button className="nav-signup"
+          style={{ marginLeft: '10px', backgroundColor: 'white', color: '#002B5B', fontWeight: 'bold' }} onClick={notify}>Notification</Button>
         <Toaster position="top-center"
           reverseOrder={false}
         />

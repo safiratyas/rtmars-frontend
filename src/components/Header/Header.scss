@@ -12,13 +12,17 @@ $dark-green: #06A788;
     padding-top: 15%;
   }
 
+  p {
+    text-align: justify;
+  }
+
   .list-btn {
     background-color: $dark-blue;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
     border-radius: 20px;
     width: 50%;
     height: 50px;
-    margin-top: 5%;
+    // margin-top: 2%;
 
     &:hover {
       background-color: $dark-blue;

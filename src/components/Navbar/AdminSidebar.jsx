@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './Navbar.scss';
-import CardNotification from "../Cards/Notification/CardNotification";
+// import CardNotification from "../Cards/Notification/CardNotification";
 import CardLogout from "../Cards/Notification/Logout";
 
 function AdminSidebar({ userData, notification }) {
@@ -37,7 +37,7 @@ function AdminSidebar({ userData, notification }) {
           </Nav>
           <Nav className="ms-auto">
             <CardLogout />
-            <CardNotification notification={notification} />
+            {/* <CardNotification notification={notification} /> */}
           </Nav>
         </Container>
       </Navbar>

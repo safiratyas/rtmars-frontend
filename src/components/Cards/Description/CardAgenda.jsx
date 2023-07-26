@@ -60,27 +60,66 @@ function CardAgenda({ agenda }) {
               /></SwiperSlide>
             </Swiper>
           </Col>
-          <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
-            {agenda && agenda.map((list) => {
+          {agenda && agenda.map((list) => {
+            if (list.id % 2 !== 0) {
               return (
-                <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-                  <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
-                  <SwiperSlide><img src={process.env.PUBLIC_URL + '/images/kegiatan-kpldh-2.jpeg'} className="mb-2 swiper-photo" alt="header"
-                  /></SwiperSlide>
-                  <SwiperSlide><img src={process.env.PUBLIC_URL + '/images/kegiatan-kpldh-3.jpeg'} className="mb-2 swiper-photo" alt="header"
-                  /></SwiperSlide>
-                </Swiper>
+                <>
+                  <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
+                    {agenda && agenda.map((list) => {
+                      return (
+                        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                          <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
+                          <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
+                          <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
+                        </Swiper>
+                      )
+                    })}
+                  </Col>
+                  <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
+                    {agenda && agenda.map((list) => {
+                      return (
+                        <div className="agenda-desc mb-5">
+                          <h5>{list.jenis_kegiatan}</h5>
+                          <p>{list.keterangan}</p>
+                          <a href='https://www.jakarta.go.id/ketuk-pintu-layani-dengan-hati' target="_blank">
+                            Baca Selengkapnya Disini {''}</a>
+                        </div>
+                      )
+                    })}
+                  </Col>
+                </>
               )
-            })}
-          </Col>
-          <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
-            <div className="agenda-desc mb-5">
-              <h5>Kegiatan KPLDH Bersama Puskesmas Kecamatan Tebet</h5>
-              <p>Ketuk Pintu Layani Dengan Hati (KPLDH) adalah upaya pemerintah Provinsi DKI Jakarta yang bertujuan untuk meningkatkan pelayanan kesehatan bagi masyarakat. KPLDH memiliki fungsi menunjang dan membantu dalam melaksanakan kegiatan-kegiatan puskesmas dalam wilayah kerjanya yang belum terjangkau oleh pelayanan kesehatan. </p>
-              <a href='https://www.jakarta.go.id/ketuk-pintu-layani-dengan-hati' target="_blank">
-                Baca Selengkapnya Disini {''}</a>
-            </div>
-          </Col>
+            } else {
+              return (
+                <>
+                  <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
+                    {agenda && agenda.map((list) => {
+                      return (
+                        <div className="agenda-desc mb-5">
+                          <h5>{list.jenis_kegiatan}</h5>
+                          <p>{list.keterangan}</p>
+                          <a href='https://www.jakarta.go.id/ketuk-pintu-layani-dengan-hati' target="_blank">
+                            Baca Selengkapnya Disini {''}</a>
+                        </div>
+                      )
+                    })}
+                  </Col>
+                  <Col md={6} style={{ marginTop: "5%", marginBottom: "5%" }}>
+                    {agenda && agenda.map((list) => {
+                      return (
+                        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                          <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
+                          <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
+                          <SwiperSlide><img src={list.foto_kegiatan} className="mb-2 swiper-photo" alt="Foto Kegiatan" /></SwiperSlide>
+                        </Swiper>
+                      )
+                    })}
+                  </Col>
+                </>
+              )
+            }
+          })}
+
         </Row>
       </div>
     </Container>
