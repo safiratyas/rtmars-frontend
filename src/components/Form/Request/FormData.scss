@@ -22,3 +22,16 @@ $soft-blue: #8FE3CF;
   text-align: center;
   justify-content: center;
 }
+
+  .laporan {
+    p {
+      text-align: justify;
+      font-weight: bold;
+      color: $dark-green;
+    }
+  
+    h3 {
+      text-align: justify;
+      font-weight: bold;
+    }
+  }

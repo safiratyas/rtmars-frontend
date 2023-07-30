@@ -18,6 +18,12 @@ function AdminSidebar({ userData, notification }) {
           </Link>
           <Nav cclassName="justify-content-center mx-auto nav-center" style={{ paddingRight: "20%" }}>
             <NavDropdown title="Pendataan" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
+                Input Data Warga
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/input/kegiatan" style={{ textDecoration: 'none' }}>
+                Input Kegiatan
+              </NavDropdown.Item>
               <NavDropdown.Item href="/pendataan/warga" style={{ textDecoration: 'none' }}>
                 Daftar Data Warga
               </NavDropdown.Item>
@@ -25,12 +31,12 @@ function AdminSidebar({ userData, notification }) {
                 Daftar Surat Permohonan
               </NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Edit Data" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="/input/warga" style={{ textDecoration: 'none' }}>
-                Input Data Warga
+            <NavDropdown title="Data Bulanan" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="/input/laporan" style={{ textDecoration: 'none' }}>
+                Input Data Bulanan
               </NavDropdown.Item>
               <NavDropdown.Item href="/input/kegiatan" style={{ textDecoration: 'none' }}>
-                Input Kegiatan
+                Laporan Bulanan
               </NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/agenda">Agenda</Nav.Link>
