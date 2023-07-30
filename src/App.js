@@ -22,6 +22,7 @@ import DaftarKegiatan from './pages/FormKegiatan';
 import Agenda from './pages/Agenda';
 import DashboardAdmin from './pages/DashboardAdmin';
 import FormLaporan from './pages/FormLaporan';
+import LaporanBulanan from './pages/LaporanDokumen';
 
 // Styles
 import './styles/App.scss';
@@ -45,6 +46,7 @@ function App() {
           <Route path="/input/surat" element={<SuratWarga />} />
           <Route path="/input/kegiatan" element={<DaftarKegiatan />} />
           <Route path="/input/laporan" element={<FormLaporan />} />
+          <Route path="/laporan/dokumen/warga" element={<LaporanBulanan />} />
           <Route path="/input/profile/:id" element={<DataProfile />} />
           <Route path="/agenda" element={<Agenda />} />
           <Route path="/dashboard/admin" element={<DashboardAdmin />} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavbarAdmin from "../components/Navbar/NavbarAdmin";
-import FormLaporan from "../components/Form/Request/FormLaporan";
+import Dokumen from "../components/Form/Request/Document";
 import CardAdminError from "../components/Cards/Description/CardAdminError";
 import { getAdminLogin } from "../redux/actions/getAdminLogin";
 // import { getDocumentID } from "../redux/actions/getDocument";
@@ -41,12 +41,10 @@ function LaporanBulanan() {
     handleLogin();
   }, []);
 
-  console.log(userData)
-
   return isLoggedIn ? (
     <>
       <NavbarAdmin userData={userData} />
-      <FormLaporan userData={userData} />
+      <Dokumen userData={userData} />
     </>
   ) : (
     <CardAdminError />

@@ -52,6 +52,9 @@ import {
 import {
   getTotalCitizenReducer
 } from './getTotalCitizen'
+import {
+  createReportReducer
+} from './createReport'
 
 export default combineReducers({
   getCitizenLoginReducer,
@@ -70,5 +73,6 @@ export default combineReducers({
   getListAgendaReducer,
   getListCitizenNotification,
   getListAdminNotification,
-  getTotalCitizenReducer
+  getTotalCitizenReducer,
+  createReportReducer
 });

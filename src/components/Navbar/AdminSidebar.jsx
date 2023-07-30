@@ -35,7 +35,7 @@ function AdminSidebar({ userData, notification }) {
               <NavDropdown.Item href="/input/laporan" style={{ textDecoration: 'none' }}>
                 Input Data Bulanan
               </NavDropdown.Item>
-              <NavDropdown.Item href="/input/kegiatan" style={{ textDecoration: 'none' }}>
+              <NavDropdown.Item href="/laporan/dokumen/warga" style={{ textDecoration: 'none' }}>
                 Laporan Bulanan
               </NavDropdown.Item>
             </NavDropdown>
